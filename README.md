@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-### Introduction
+## Introduction
 
 The `tidycat` package includes the `tidy_categorical()` function to
 expand `broom::tidy()` outputs for categorical parameter estimates.
@@ -26,7 +26,7 @@ And the development version from [GitHub](https://github.com/) with:
 devtools::install_github("guyabel/tidycat")
 ```
 
-### Additional columns on broom::tidy() for categorical parameter estimates
+## Additional columns on broom::tidy() for categorical parameter estimates
 
 The `tidy()` function in the broom package takes the messy output of
 built-in functions in R, such as `lm()`, and turns them into tidy data
@@ -118,7 +118,7 @@ m0 %>%
 #> 15 alcgp120+    8.29        0.288 alcgp       "120+"      main   Non-Baseline
 ```
 
-### Standard coefficient plots
+## Standard coefficient plots
 
 The results from `broom::tidy()` can be used to quickly plot estimated
 coefficients and their confidence intervals.
@@ -153,9 +153,9 @@ ggplot(data = d0,
    geom_pointrange()
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-5-1.png" width="100%" />
+<img src="readme/fig/unnamed-chunk-5-1.png" width="100%" />
 
-### Enhanced coefficient plots
+## Enhanced coefficient plots
 
 Using additional columns from `tidy_categroical()` and
 `ggforce::facet_col()` the coefficient plot can be enhanced to include
@@ -198,7 +198,7 @@ ggplot(data = d0,
    geom_pointrange()
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-6-1.png" width="100%" />
+<img src="readme/fig/unnamed-chunk-6-1.png" width="100%" />
 
 Or horizontal plot using `ggforce::facet_row()`
 
@@ -213,4 +213,6 @@ ggplot(data = d0,
  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-7-1.png" width="100%" />
+<img src="readme/fig/unnamed-chunk-7-1.png" width="100%" />
+
+    #> [1] TRUE

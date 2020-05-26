@@ -8,12 +8,12 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  # fig.path = "man/figures/README-",
+  fig.path = "readme/fig/",
   out.width = "100%"
 )
 ```
 
-### Introduction
+## Introduction
 
 
 The `tidycat` package includes the `tidy_categorical()` function to expand `broom::tidy()` outputs for categorical parameter estimates.
@@ -37,7 +37,7 @@ devtools::install_github("guyabel/tidycat")
 ```
 
 
-### Additional columns on broom::tidy() for categorical parameter estimates
+## Additional columns on broom::tidy() for categorical parameter estimates
 
 The `tidy()` function in the broom package takes the messy output of built-in functions in R, such as `lm()`, and turns them into tidy data frames.
 
@@ -72,7 +72,7 @@ m0 %>%
   select(-statistic, -p.value)
 ```
 
-### Standard coefficient plots
+## Standard coefficient plots
 
 The results from `broom::tidy()` can be used to quickly plot estimated coefficients and their confidence intervals.
 
@@ -92,7 +92,7 @@ ggplot(data = d0,
    geom_pointrange()
 ```
 
-### Enhanced coefficient plots
+## Enhanced coefficient plots
 
 Using additional columns from `tidy_categroical()` and `ggforce::facet_col()` the coefficient plot can be enhanced to include the reference categories. Note the switch of the `x` aesthetic to the `level` column rather than `term`
 
@@ -130,7 +130,9 @@ ggplot(data = d0,
 
 
 ```{r, echo=FALSE}
-getwd()
+# getwd()
 file.copy("README.md", to = "../README.md", overwrite = TRUE)
+library(fs)
+dir_copy(path = "./readme/fig", new_path = "./fig", overwrite = TRUE)
 ```
 
