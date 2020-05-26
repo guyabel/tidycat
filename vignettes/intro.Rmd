@@ -1,0 +1,113 @@
+---
+title: "The tidycat package: expand broom::tidy() output for categorical parameter estimates"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{The tidycat package: expand broom::tidy() outputs for categorical parameter estimates}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(tidycat)
+```
+
+The `tidycat` package includes the `tidy_categorical()` function to expand `broom::tidy()` outputs for categorical parameter estimates.
+
+<!-- ## Installing `tidycat` -->
+
+<!-- On Windows or macOS the package is most easily installed via CRAN. -->
+
+<!-- ```{r} -->
+<!-- install.packages("tidycat") -->
+<!-- ``` -->
+
+### Additional columns on broom::tidy() for categorical parameter estimates
+
+The `tidy()` function in the broom package takes the messy output of built-in functions in R, such as lm, and turns them into tidy data frames.
+
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+library(broom)
+m0 <- esoph %>%
+   mutate_if(is.factor, ~factor(., ordered = FALSE)) %>%
+   glm(cbind(ncases, ncontrols) ~ agegp + tobgp + alcgp, data = .,
+         family = binomial())
+# tidy
+tidy(m0)
+```
+Note: Currently ordered factor not supported in `tidycat`, hence their removal in `mutate_if()` above
+
+The `tidy_categorical()` function adds further columns to tidy output to help manage categorical variables
+
+```{r}
+library(tidycat)
+m0 %>%
+  tidy() %>%
+  tidy_categorical(m = m0)
+```
+
+Include reference categories and a column to indicate the additional terms using the `exclude_reference` and `reference_label` arguments
+
+
+### Standard coefficient plots
+
+The results from `broom::tidy()` can be used to quickly plot estimated coefficients and their confidence intervals.
+
+```{r, fig.width=6, fig.height=4}
+# store parameter estimates and confidence intervals (except for the intercept)
+d0 <- m0 %>%
+  tidy(conf.int = TRUE) %>%
+  slice(-1)
+d0
+
+library(ggplot2)
+library(tidyr)
+ggplot(data = d0,
+        mapping = aes(x = term, y = estimate,
+                      ymin = conf.low, ymax = conf.high)) +
+   coord_flip() +
+   geom_hline(yintercept = 0, linetype = "dashed") +
+   geom_pointrange()
+```
+
+### Enhanced coefficient plots
+
+Using additional columns from `tidy_categroical()` and `ggforce::facet_col()` the coefficient plot can be enhanced to include the reference categories. Note the switch of the `x` aesthetic to the `level` column rather than `term`
+
+```{r, fig.width=6, fig.height=4}
+d0 <- m0 %>%
+  tidy(conf.int = TRUE) %>%
+  tidy_categorical(m = m0, exclude_reference = FALSE, reference_label = "Baseline") %>%
+  slice(-1)
+d0 %>%
+  select(-(3:5))
+
+library(ggforce)
+ggplot(data = d0,
+        mapping = aes(x = level, y = estimate, colour = reference,
+                      ymin = conf.low, ymax = conf.high)) +
+   facet_col(facets = vars(variable), scales = "free_y", space = "free") +
+   coord_flip() +
+   geom_hline(yintercept = 0, linetype = "dashed") +
+   geom_pointrange()
+```
+
+Or horizontal plot using `ggforce::facet_row()`
+
+```{r, fig.width=6, fig.height=4}
+ggplot(data = d0,
+      mapping = aes(x = level, y = estimate,
+                    ymin = conf.low, ymax = conf.high,
+                    colour = reference)) +
+ facet_row(facets = vars(variable), scales = "free_x", space = "free") +
+ geom_hline(yintercept = 0, linetype = "dashed") +
+ geom_pointrange() +
+ theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
