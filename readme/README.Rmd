@@ -115,7 +115,9 @@ ggplot(data = d0,
    geom_pointrange()
 ```
 
-Note the switch of the `x` aesthetic to the `level` column rather than `term`. Alternatively, horizontal plots can be obtained using `ggforce::facet_row()` and loosing `coord_flip()`;
+Note the switch of the `x` aesthetic to the `level` column rather than `term`. 
+
+Alternatively, horizontal plots can be obtained using `ggforce::facet_row()` and loosing `coord_flip()`;
 
 ```{r, fig.width=6, fig.height=4}
 ggplot(data = d0,
