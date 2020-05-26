@@ -165,11 +165,11 @@ ggplot(data = d1,
    geom_pointrange()
 ```
 
-The empty levels can be dropped by filtering on the `n_level` column for categories with more than zero observations.
+The empty levels can be dropped by filtering on the `n_level` column for categories with more than zero observations and not `NA` in term column.
 
-```{r, fig.width=6, fig.height=6}
+```{r, fig.width=6, fig.height=5}
 ggplot(data = d1 %>% 
-         filter(n_level > 0),
+         filter(n_level > 0 | !is.na(term)),
         mapping = aes(x = level, y = estimate, colour = reference,
                       ymin = conf.low, ymax = conf.high)) +
    facet_col(facets = vars(variable), scales = "free_y", space = "free") +
@@ -177,7 +177,6 @@ ggplot(data = d1 %>%
    geom_hline(yintercept = 0, linetype = "dashed") +
    geom_pointrange()
 ```
-
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 # getwd()

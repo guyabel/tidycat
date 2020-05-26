@@ -297,11 +297,11 @@ ggplot(data = d1,
 <img src="readme/fig/unnamed-chunk-10-1.png" width="100%" />
 
 The empty levels can be dropped by filtering on the `n_level` column for
-categories with more than zero observations.
+categories with more than zero observations and not `NA` in term column.
 
 ``` r
 ggplot(data = d1 %>% 
-         filter(n_level > 0),
+         filter(n_level > 0 | !is.na(term)),
         mapping = aes(x = level, y = estimate, colour = reference,
                       ymin = conf.low, ymax = conf.high)) +
    facet_col(facets = vars(variable), scales = "free_y", space = "free") +
