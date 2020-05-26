@@ -61,8 +61,9 @@ tidy(m0)
 Note: Currently ordered factor not supported in `tidycat`, hence their
 removal in `mutate_if()` above
 
-The `tidy_categorical()` function adds further columns to tidy output to
-help manage categorical variables
+The `tidy_categorical()` function adds further columns (`variable`,
+`level` and `effect`) to tidy output to help manage categorical
+variables
 
 ``` r
 library(tidycat)
@@ -86,11 +87,11 @@ m0 %>%
 #> 12 alcgp120+      2.12      0.288      7.36 1.90e-13 alcgp       "120+"   main
 ```
 
-Include reference categories and a column to indicate the additional
-terms using the `exclude_reference` and `reference_label` arguments.
-Setting `exponentiate = TRUE` ensures the parameter estimates in the
-reference group are set to one instead of zero (even odds in the
-logistic regression example below).
+Include additional rows for reference category terms and column to
+indicate their location by setting `exclude_reference = FALSE` and
+`reference_label` to a suitable string. Setting `exponentiate = TRUE`
+ensures the parameter estimates in the reference group are set to one
+instead of zero (even odds in the logistic regression example below).
 
 ``` r
 m0 %>%
@@ -157,10 +158,12 @@ ggplot(data = d0,
 
 ## Enhanced coefficient plots
 
-Using additional columns from `tidy_categroical()` and
-`ggforce::facet_col()` the coefficient plot can be enhanced to include
-the reference categories. Note the switch of the `x` aesthetic to the
-`level` column rather than `term`
+Using the additional columns from `tidy_categroical()` the coefficient
+plot can be enhanced to include the reference category, allowing the
+reader to better grasp the meaning of the parameter estimates in each
+categorical variable. Using `ggforce::facet_col()` the terms of each
+variable can be separated to further improve the presentation of the
+coefficient plot.
 
 ``` r
 d0 <- m0 %>%
@@ -200,7 +203,9 @@ ggplot(data = d0,
 
 <img src="readme/fig/unnamed-chunk-6-1.png" width="100%" />
 
-Or horizontal plot using `ggforce::facet_row()`
+Note the switch of the `x` aesthetic to the `level` column rather than
+`term`. Alternatively, horizontal plots can be obtained using
+`ggforce::facet_row()` and loosing `coord_flip()`;
 
 ``` r
 ggplot(data = d0,
