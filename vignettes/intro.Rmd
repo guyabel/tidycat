@@ -14,23 +14,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(tidycat)
-```
+### Introduction
 
 The `tidycat` package includes the `tidy_categorical()` function to expand `broom::tidy()` outputs for categorical parameter estimates.
 
-<!-- ## Installing `tidycat` -->
-
-<!-- On Windows or macOS the package is most easily installed via CRAN. -->
-
-<!-- ```{r} -->
-<!-- install.packages("tidycat") -->
-<!-- ``` -->
-
 ### Additional columns on broom::tidy() for categorical parameter estimates
 
-The `tidy()` function in the broom package takes the messy output of built-in functions in R, such as lm, and turns them into tidy data frames.
+The `tidy()` function in the broom package takes the messy output of built-in functions in R, such as `lm()`, and turns them into tidy data frames.
 
 ```{r, message=FALSE, warning=FALSE}
 library(dplyr)
@@ -53,8 +43,15 @@ m0 %>%
   tidy_categorical(m = m0)
 ```
 
-Include reference categories and a column to indicate the additional terms using the `exclude_reference` and `reference_label` arguments
+Include reference categories and a column to indicate the additional terms using the `exclude_reference` and `reference_label` arguments. Setting `exponentiate = TRUE` ensures the parameter estimates in the reference group are set to one instead of zero (even odds in the logistic regression example below).
 
+```{r}
+m0 %>%
+  tidy(exponentiate = TRUE) %>%
+  tidy_categorical(m = m0, exponentiate = TRUE, 
+                   exclude_reference = FALSE, reference_label = "Baseline") %>%
+  select(-statistic, -p.value)
+```
 
 ### Standard coefficient plots
 
@@ -70,8 +67,7 @@ d0
 library(ggplot2)
 library(tidyr)
 ggplot(data = d0,
-        mapping = aes(x = term, y = estimate,
-                      ymin = conf.low, ymax = conf.high)) +
+        mapping = aes(x = term, y = estimate, ymin = conf.low, ymax = conf.high)) +
    coord_flip() +
    geom_hline(yintercept = 0, linetype = "dashed") +
    geom_pointrange()
@@ -86,6 +82,7 @@ d0 <- m0 %>%
   tidy(conf.int = TRUE) %>%
   tidy_categorical(m = m0, exclude_reference = FALSE, reference_label = "Baseline") %>%
   slice(-1)
+
 d0 %>%
   select(-(3:5))
 
