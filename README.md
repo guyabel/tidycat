@@ -204,7 +204,9 @@ ggplot(data = d0,
 <img src="readme/fig/unnamed-chunk-6-1.png" width="100%" />
 
 Note the switch of the `x` aesthetic to the `level` column rather than
-`term`. Alternatively, horizontal plots can be obtained using
+`term`.
+
+Alternatively, horizontal plots can be obtained using
 `ggforce::facet_row()` and loosing `coord_flip()`;
 
 ``` r

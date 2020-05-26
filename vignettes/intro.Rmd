@@ -14,11 +14,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-### Introduction
+## Introduction
 
 The `tidycat` package includes the `tidy_categorical()` function to expand `broom::tidy()` outputs for categorical parameter estimates.
 
-### Additional columns on broom::tidy() for categorical parameter estimates
+## Additional columns on broom::tidy() for categorical parameter estimates
 
 The `tidy()` function in the broom package takes the messy output of built-in functions in R, such as `lm()`, and turns them into tidy data frames.
 
@@ -27,33 +27,31 @@ library(dplyr)
 library(broom)
 m0 <- esoph %>%
    mutate_if(is.factor, ~factor(., ordered = FALSE)) %>%
-   glm(cbind(ncases, ncontrols) ~ agegp + tobgp + alcgp, data = .,
-         family = binomial())
+   glm(cbind(ncases, ncontrols) ~ agegp + tobgp + alcgp, data = ., family = binomial())
 # tidy
 tidy(m0)
 ```
 Note: Currently ordered factor not supported in `tidycat`, hence their removal in `mutate_if()` above
 
-The `tidy_categorical()` function adds further columns (`variable`, `level` and `effect`) to tidy output to help manage categorical variables
+The `tidy_categorical()` function adds further columns (`variable`, `level`, `effect` and `reference`) to the `broom::tidy()` output to help manage categorical variables
 
 ```{r}
 library(tidycat)
 m0 %>%
   tidy() %>%
-  tidy_categorical(m = m0)
+  tidy_categorical(m = m0, include_reference =  FALSE)
 ```
 
-Include additional rows for reference category terms and column to indicate their location by setting `exclude_reference = FALSE` and `reference_label` to a suitable string. Setting `exponentiate = TRUE` ensures the parameter estimates in the reference group are set to one instead of zero (even odds in the logistic regression example below).
+Include additional rows for reference category terms and column to indicate their location by setting `include_reference = TRUE` (default). Setting `exponentiate = TRUE` ensures the parameter estimates in the reference group are set to one instead of zero (even odds in the logistic regression example below).
 
 ```{r}
 m0 %>%
   tidy(exponentiate = TRUE) %>%
-  tidy_categorical(m = m0, exponentiate = TRUE, 
-                   exclude_reference = FALSE, reference_label = "Baseline") %>%
+  tidy_categorical(m = m0, exponentiate = TRUE, reference_label = "Baseline") %>%
   select(-statistic, -p.value)
 ```
 
-### Standard coefficient plots
+## Standard coefficient plots
 
 The results from `broom::tidy()` can be used to quickly plot estimated coefficients and their confidence intervals.
 
@@ -73,14 +71,14 @@ ggplot(data = d0,
    geom_pointrange()
 ```
 
-### Enhanced coefficient plots
+## Enhanced coefficient plots
 
 Using the additional columns from `tidy_categroical()` the coefficient plot can be enhanced to include the reference category, allowing the reader to better grasp the meaning of the parameter estimates in each categorical variable. Using `ggforce::facet_col()` the terms of each variable can be separated to further improve the presentation of the coefficient plot. 
 
 ```{r, fig.width=6, fig.height=4}
 d0 <- m0 %>%
   tidy(conf.int = TRUE) %>%
-  tidy_categorical(m = m0, exclude_reference = FALSE, reference_label = "Baseline") %>%
+  tidy_categorical(m = m0) %>%
   slice(-1)
 
 d0 %>%
@@ -109,4 +107,54 @@ ggplot(data = d0,
  geom_hline(yintercept = 0, linetype = "dashed") +
  geom_pointrange() +
  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+## Interactions
+
+Models with interactions can also be handled in `tidy_categorical()`. Using the `mtcars` data we can create three types of interactions (between two numeric variables, between a numeric variable and categorical variable and between two categorical variables)
+
+```{r}
+m1 <- mtcars %>%
+  mutate(engine = recode_factor(vs, `0` = "straight", `1` = "V-shaped"),
+         transmission = recode_factor(am, `0` = "automatic", `1` = "manual")) %>%
+  lm(mpg ~ as.factor(cyl) + wt * hp + wt * transmission + engine * transmission , data = .)
+
+tidy(m1)
+```
+Setting `n_level = TRUE` creates an additional column to monitor the number of observations in each of level of the categorical variables, including interaction terms in the model:
+
+```{r}
+d1 <- m1 %>%
+  tidy(conf.int = TRUE) %>%
+  tidy_categorical(m = m1, n_level = TRUE) %>%
+  slice(-1)
+
+d1 %>%
+  select(-(2:7))
+```
+
+We can use similar plotting code as above to plot the interactions:
+
+```{r, fig.width=6, fig.height=6}
+ggplot(data = d1,
+        mapping = aes(x = level, y = estimate, colour = reference,
+                      ymin = conf.low, ymax = conf.high)) +
+   facet_col(facets = vars(variable), scales = "free_y", space = "free") +
+   coord_flip() +
+   geom_hline(yintercept = 0, linetype = "dashed") +
+   geom_pointrange()
+```
+
+The empty levels can be dropped by filtering on the `n_level` column for categories with more than zero observations.
+
+```{r, fig.width=6, fig.height=6}
+ggplot(data = d1 %>% 
+         filter(n_level > 0),
+        mapping = aes(x = level, y = estimate, colour = reference,
+                      ymin = conf.low, ymax = conf.high)) +
+   facet_col(facets = vars(variable), scales = "free_y", space = "free") +
+   coord_flip() +
+   geom_hline(yintercept = 0, linetype = "dashed") +
+   geom_pointrange()
 ```

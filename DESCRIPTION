@@ -1,7 +1,7 @@
 Package: tidycat
 Type: Package
 Title: Expand broom::tidy() Output for Categorical Parameter Estimates
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(person(c("Guy", "J."), "Abel", role = c("aut", "cre"),
                     email = "g.j.abel@gmail.com",
                     comment = c(ORCID = "0000-0002-4893-5687")))
