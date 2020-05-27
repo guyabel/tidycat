@@ -1,6 +1,6 @@
 Package: tidycat
 Type: Package
-Title: Expand broom::tidy() Output for Categorical Parameter Estimates
+Title: Expand Tidy Output for Categorical Parameter Estimates
 Version: 0.1.1
 Authors@R: c(person(c("Guy", "J."), "Abel", role = c("aut", "cre"),
                     email = "g.j.abel@gmail.com",
@@ -8,7 +8,7 @@ Authors@R: c(person(c("Guy", "J."), "Abel", role = c("aut", "cre"),
 Maintainer: Guy J. Abel <g.j.abel@gmail.com>
 URL: https://github.com/guyabel/tidycat
 BugReports: https://github.com/guyabel/tidycat/issues
-Description: Create additional rows and columns on broom::tidy() output to allow for easier control of plotting categorical parameter estimates. 
+Description: Create additional rows and columns on broom::tidy() output to allow for easier control on categorical parameter estimates. 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
