@@ -156,12 +156,48 @@ ggplot(data = d0,
 
 ## Enhanced coefficient plots
 
-Using the additional columns from `tidy_categroical()` the coefficient
-plot can be enhanced to include the reference category, allowing the
-reader to better grasp the meaning of the parameter estimates in each
-categorical variable. Using `ggforce::facet_col()` the terms of each
-variable can be separated to further improve the presentation of the
-coefficient plot.
+The additional columns from `tidy_categroical()` can be used to group
+together terms from the same categorical variable by setting `colour =
+variable`
+
+``` r
+d0 <- m0 %>%
+  tidy(conf.int = TRUE) %>%
+  tidy_categorical(m = m0, include_reference = FALSE) %>%
+  slice(-1)
+
+d0 %>%
+  select(-(3:5))
+#> # A tibble: 11 x 8
+#>    term      estimate conf.low conf.high variable level  effect reference       
+#>    <chr>        <dbl>    <dbl>     <dbl> <chr>    <fct>  <chr>  <chr>           
+#>  1 agegp35-~    1.61   -0.100      4.54  agegp    35-44  main   Non-Baseline Ca~
+#>  2 agegp45-~    2.98    1.41       5.86  agegp    45-54  main   Non-Baseline Ca~
+#>  3 agegp55-~    3.36    1.81       6.24  agegp    55-64  main   Non-Baseline Ca~
+#>  4 agegp65-~    3.73    2.16       6.62  agegp    65-74  main   Non-Baseline Ca~
+#>  5 agegp75+     3.68    1.99       6.61  agegp    75+    main   Non-Baseline Ca~
+#>  6 tobgp10-~    0.341  -0.0644     0.742 tobgp    10-19  main   Non-Baseline Ca~
+#>  7 tobgp20-~    0.396  -0.0935     0.872 tobgp    20-29  main   Non-Baseline Ca~
+#>  8 tobgp30+     0.868   0.319      1.41  tobgp    30+    main   Non-Baseline Ca~
+#>  9 alcgp40-~    1.12    0.665      1.60  alcgp    40-79  main   Non-Baseline Ca~
+#> 10 alcgp80-~    1.45    0.939      1.97  alcgp    80-119 main   Non-Baseline Ca~
+#> 11 alcgp120+    2.12    1.56       2.69  alcgp    120+   main   Non-Baseline Ca~
+
+ggplot(data = d0,
+        mapping = aes(x = term, y = estimate, ymin = conf.low, ymax = conf.high,
+                      colour = variable)) +
+   coord_flip() +
+   geom_hline(yintercept = 0, linetype = "dashed") +
+   geom_pointrange()
+```
+
+<img src="readme/fig/unnamed-chunk-6-1.png" width="100%" />
+
+The additional rows from `tidy_categroical()` can be used to include the
+reference categories in a coefficient plot, allowing the reader to
+better grasp the meaning of the parameter estimates in each categorical
+variable. Using `ggforce::facet_col()` the terms of each variable can be
+separated to further improve the presentation of the coefficient plot.
 
 ``` r
 d0 <- m0 %>%
@@ -199,7 +235,7 @@ ggplot(data = d0,
    geom_pointrange()
 ```
 
-<img src="readme/fig/unnamed-chunk-6-1.png" width="100%" />
+<img src="readme/fig/unnamed-chunk-7-1.png" width="100%" />
 
 Note the switch of the `x` aesthetic to the `level` column rather than
 `term`.
@@ -218,7 +254,7 @@ ggplot(data = d0,
  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-<img src="readme/fig/unnamed-chunk-7-1.png" width="100%" />
+<img src="readme/fig/unnamed-chunk-8-1.png" width="100%" />
 
 ## Interactions
 
@@ -294,7 +330,7 @@ ggplot(data = d1,
    geom_pointrange()
 ```
 
-<img src="readme/fig/unnamed-chunk-10-1.png" width="100%" />
+<img src="readme/fig/unnamed-chunk-11-1.png" width="100%" />
 
 The empty levels can be dropped by filtering on the `n_level` column for
 categories with more than zero observations and not `NA` in term column.
@@ -310,6 +346,6 @@ ggplot(data = d1 %>%
    geom_pointrange()
 ```
 
-<img src="readme/fig/unnamed-chunk-11-1.png" width="100%" />
+<img src="readme/fig/unnamed-chunk-12-1.png" width="100%" />
 
     #> [1] TRUE

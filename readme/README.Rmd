@@ -92,7 +92,26 @@ ggplot(data = d0,
 
 ## Enhanced coefficient plots
 
-Using the additional columns from `tidy_categroical()` the coefficient plot can be enhanced to include the reference category, allowing the reader to better grasp the meaning of the parameter estimates in each categorical variable. Using `ggforce::facet_col()` the terms of each variable can be separated to further improve the presentation of the coefficient plot. 
+The additional columns from `tidy_categroical()` can be used to group together terms from the same categorical variable by setting `colour = variable`
+
+```{r, fig.width=6, fig.height=4}
+d0 <- m0 %>%
+  tidy(conf.int = TRUE) %>%
+  tidy_categorical(m = m0, include_reference = FALSE) %>%
+  slice(-1)
+
+d0 %>%
+  select(-(3:5))
+
+ggplot(data = d0,
+        mapping = aes(x = term, y = estimate, ymin = conf.low, ymax = conf.high,
+                      colour = variable)) +
+   coord_flip() +
+   geom_hline(yintercept = 0, linetype = "dashed") +
+   geom_pointrange()
+```
+
+The additional rows from `tidy_categroical()` can be used to include the reference categories in a coefficient plot, allowing the reader to better grasp the meaning of the parameter estimates in each categorical variable. Using `ggforce::facet_col()` the terms of each variable can be separated to further improve the presentation of the coefficient plot. 
 
 ```{r, fig.width=6, fig.height=4}
 d0 <- m0 %>%
@@ -127,6 +146,8 @@ ggplot(data = d0,
  geom_pointrange() +
  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
+
+
 
 
 ## Interactions
