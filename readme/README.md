@@ -379,8 +379,8 @@ tidy(m0)
 #> 12 alcgp120+      2.12      0.288      7.36 1.90e-13
 ```
 
-Note: Currently ordered factor not supported in `tidycat`, hence their
-removal in `mutate_if()` above
+Note: Currently ordered factors are not supported in `tidycat`, hence
+their removal in `mutate_if()` above.
 
 The `tidy_categorical()` function adds further columns (`variable`,
 `level`, `effect` and `reference`) to the `broom::tidy()` output to help
