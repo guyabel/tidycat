@@ -1,5 +1,8 @@
+The tidycat package: expand broom::tidy() output for categorical
+parameter estimates
+================
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<img src='../man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
 
@@ -154,7 +157,7 @@ ggplot(data = d0,
    geom_pointrange()
 ```
 
-<img src="readme/fig/unnamed-chunk-8-1.png" width="100%" />
+![](C:/Users/Guy/Documents/GitHub/tidycat/README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
 ## Enhanced coefficient plots
 
@@ -193,7 +196,7 @@ ggplot(data = d0,
    geom_pointrange()
 ```
 
-<img src="readme/fig/unnamed-chunk-9-1.png" width="100%" />
+![](C:/Users/Guy/Documents/GitHub/tidycat/README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 The additional rows from `tidy_categorical()` can be used to include the
 reference categories in a coefficient plot, allowing the reader to
@@ -237,7 +240,7 @@ ggplot(data = d0,
    geom_pointrange()
 ```
 
-<img src="readme/fig/unnamed-chunk-10-1.png" width="100%" />
+![](C:/Users/Guy/Documents/GitHub/tidycat/README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 Note the switch of the `x` aesthetic to the `level` column rather than
 `term`.
@@ -256,7 +259,7 @@ ggplot(data = d0,
  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-<img src="readme/fig/unnamed-chunk-11-1.png" width="100%" />
+![](C:/Users/Guy/Documents/GitHub/tidycat/README_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
 ## Interactions
 
@@ -326,33 +329,31 @@ We can use similar plotting code as above to plot the interactions:
 ggplot(data = d1,
         mapping = aes(x = level, y = estimate, colour = reference,
                       ymin = conf.low, ymax = conf.high)) +
-   facet_col(facets = vars(variable), scales = "free_y", space = "free") +
+   facet_col(facets = "variable", scales = "free_y", space = "free") +
    coord_flip() +
    geom_hline(yintercept = 0, linetype = "dashed") +
    geom_pointrange()
 ```
 
-<img src="readme/fig/unnamed-chunk-14-1.png" width="100%" />
+![](C:/Users/Guy/Documents/GitHub/tidycat/README_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
 
 The empty levels can be dropped by filtering on the `n_level` column for
 categories with more than zero observations and not `NA` in term column.
 
 ``` r
-ggplot(data = d1 %>% 
-         filter(n_level > 0 | !is.na(term)),
-        mapping = aes(x = level, y = estimate, colour = reference,
-                      ymin = conf.low, ymax = conf.high)) +
-   facet_col(facets = vars(variable), scales = "free_y", space = "free") +
-   coord_flip() +
-   geom_hline(yintercept = 0, linetype = "dashed") +
-   geom_pointrange()
+d1 %>%
+  dplyr::filter(n_level > 0 | !is.na(term)) %>%
+  ggplot(mapping = aes(x = level, y = estimate, colour = reference,
+                       ymin = conf.low, ymax = conf.high)) +
+  facet_col(facets = "variable", scales = "free_y", space = "free") +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_pointrange()
 ```
 
-<img src="readme/fig/unnamed-chunk-15-1.png" width="100%" />
+![](C:/Users/Guy/Documents/GitHub/tidycat/README_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
-### Issues
+## Issues
 
 If you have any trouble or suggestions please let me know by creating an
 issue on the [tidycat Github](https://github.com/guyabel/tidycat/issues)
-
-    #> [1] TRUE

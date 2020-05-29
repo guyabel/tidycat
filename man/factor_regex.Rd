@@ -9,10 +9,10 @@ factor_regex(m, at_start = TRUE)
 \arguments{
 \item{m}{A model object, created using a function such as \link[stats:lm]{stats::lm()}}
 
-\item{at_start}{Logical indicating whether or not to include `^` in the regular expression to begin search at start of string}
+\item{at_start}{Logical indicating whether or not to include \code{^} in the regular expression to begin search at start of string}
 }
 \value{
-A character string for use a regular expression.
+A character string for use as a regular expression.
 }
 \description{
 Primarily developed for use within \link[tidycat:tidy_categorical]{tidycat::tidy_categorical()}
@@ -20,4 +20,7 @@ Primarily developed for use within \link[tidycat:tidy_categorical]{tidycat::tidy
 \examples{
 m0 <- lm(formula = mpg ~ disp + as.factor(am)*as.factor(vs), data = mtcars)
 factor_regex(m = m0)
+}
+\author{
+Guy J. Abel
 }

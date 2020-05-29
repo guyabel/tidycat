@@ -1,6 +1,9 @@
 ---
 title: "The tidycat package: expand broom::tidy() output for categorical parameter estimates"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    toc: true 
+    readme: true
 vignette: >
   %\VignetteIndexEntry{The tidycat package: expand broom::tidy() outputs for categorical parameter estimates}
   %\VignetteEngine{knitr::rmarkdown}
@@ -12,6 +15,27 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+```
+
+<img src='../man/figures/logo.png' align="right" height="139" />
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+
+## Installation
+
+You can install the released version of tidycat from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("tidycat")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("guyabel/tidycat")
 ```
 
 ## Introduction
@@ -161,7 +185,7 @@ We can use similar plotting code as above to plot the interactions:
 ggplot(data = d1,
         mapping = aes(x = level, y = estimate, colour = reference,
                       ymin = conf.low, ymax = conf.high)) +
-   facet_col(facets = vars(variable), scales = "free_y", space = "free") +
+   facet_col(facets = "variable", scales = "free_y", space = "free") +
    coord_flip() +
    geom_hline(yintercept = 0, linetype = "dashed") +
    geom_pointrange()
@@ -170,16 +194,16 @@ ggplot(data = d1,
 The empty levels can be dropped by filtering on the `n_level` column for categories with more than zero observations and not `NA` in term column.
 
 ```{r, fig.width=6, fig.height=5}
-ggplot(data = d1 %>% 
-         filter(n_level > 0 | !is.na(term)),
-        mapping = aes(x = level, y = estimate, colour = reference,
-                      ymin = conf.low, ymax = conf.high)) +
-   facet_col(facets = vars(variable), scales = "free_y", space = "free") +
-   coord_flip() +
-   geom_hline(yintercept = 0, linetype = "dashed") +
-   geom_pointrange()
+d1 %>%
+  dplyr::filter(n_level > 0 | !is.na(term)) %>%
+  ggplot(mapping = aes(x = level, y = estimate, colour = reference,
+                       ymin = conf.low, ymax = conf.high)) +
+  facet_col(facets = "variable", scales = "free_y", space = "free") +
+  coord_flip() +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_pointrange()
 ```
 
-### Issues
+## Issues
 
 If you have any trouble or suggestions please let me know by creating an issue on the [tidycat Github](https://github.com/guyabel/tidycat/issues)

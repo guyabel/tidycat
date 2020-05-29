@@ -18,6 +18,7 @@
 #' \item{n_level}{The the number of observations per category. If `n_level` is set `NULL` (default) will not be created.}
 #' In addition, extra rows will be added, if `include_reference` is set to `FALSE` for the reference categories, obtained from \link[stats:dummy.coef]{dummy.coef()}
 #' @seealso \link[broom:tidy.lm]{broom::tidy.lm()}
+#' @author Guy J. Abel
 #'
 #' @export
 #' @importFrom magrittr "%>%"

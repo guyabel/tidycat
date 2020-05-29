@@ -5,7 +5,9 @@
 #' @param m A model object, created using a function such as \link[stats:lm]{stats::lm()}
 #' @param at_start Logical indicating whether or not to include `^` in the regular expression to begin search at start of string
 #'
-#' @return A character string for use a regular expression.
+#' @return A character string for use as a regular expression.
+#' @author Guy J. Abel
+#'
 #' @export
 #' @importFrom magrittr "%>%"
 #' @import utils

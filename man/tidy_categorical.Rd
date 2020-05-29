@@ -15,28 +15,28 @@ tidy_categorical(
 )
 }
 \arguments{
-\item{d}{A data frame \link[tibble:tibble]{tibble::tibble()} output from \link[broom:tidy.lm]{broom::tidy.lm()}; with one row for each term in the regression, including column `term`}
+\item{d}{A data frame \link[tibble:tibble]{tibble::tibble()} output from \link[broom:tidy.lm]{broom::tidy.lm()}; with one row for each term in the regression, including column \code{term}}
 
 \item{m}{A model object, created using a function such as \link[stats:lm]{lm()}}
 
-\item{include_reference}{Logical indicating to include additional rows in output for reference categories, obtained from \link[stats:dummy.coef]{dummy.coef()}. Defaults to `TRUE`}
+\item{include_reference}{Logical indicating to include additional rows in output for reference categories, obtained from \link[stats:dummy.coef]{dummy.coef()}. Defaults to \code{TRUE}}
 
 \item{reference_label}{Character string. When used will create an additional column in output with labels to indicate if terms correspond to reference categories.}
 
-\item{non_reference_label}{Character string. When `reference_label` is used will be in output to indicate if terms not corresponding to reference categories.}
+\item{non_reference_label}{Character string. When \code{reference_label} is used will be in output to indicate if terms not corresponding to reference categories.}
 
-\item{exponentiate}{Logical indicating whether or not the results in \link[broom:tidy.lm]{broom::tidy.lm()} are exponentiated. Defaults to `FALSE`.}
+\item{exponentiate}{Logical indicating whether or not the results in \link[broom:tidy.lm]{broom::tidy.lm()} are exponentiated. Defaults to \code{FALSE}.}
 
-\item{n_level}{Logical indicating whether or not to include a column `n_level` for the number of observations per category. Defaults to `FALSE`.}
+\item{n_level}{Logical indicating whether or not to include a column \code{n_level} for the number of observations per category. Defaults to \code{FALSE}.}
 }
 \value{
-Expanded \link[tibble:tibble]{tibble::tibble()} from the version passed to `d` including additional columns:
+Expanded \link[tibble:tibble]{tibble::tibble()} from the version passed to \code{d} including additional columns:
 \item{variable}{The name of the variable that the regression term belongs to.}
 \item{level}{The level of the categorical variable that the regression term belongs to. Will be an the term name for numeric variables.}
-\item{effect}{The type of term (`main` or `interaction`)}
-\item{reference}{The type of term (`reference` or `non-reference`) with label passed from `reference_label`. If `reference_label` is set `NULL` will not be created.}
-\item{n_level}{The the number of observations per category. If `n_level` is set `NULL` (default) will not be created.}
-In addition, extra rows will be added, if `include_reference` is set to `FALSE` for the reference categories, obtained from \link[stats:dummy.coef]{dummy.coef()}
+\item{effect}{The type of term (\code{main} or \code{interaction})}
+\item{reference}{The type of term (\code{reference} or \code{non-reference}) with label passed from \code{reference_label}. If \code{reference_label} is set \code{NULL} will not be created.}
+\item{n_level}{The the number of observations per category. If \code{n_level} is set \code{NULL} (default) will not be created.}
+In addition, extra rows will be added, if \code{include_reference} is set to \code{FALSE} for the reference categories, obtained from \link[stats:dummy.coef]{dummy.coef()}
 }
 \description{
 Create additional columns in a tidy model output (such as \link[broom:tidy.lm]{broom::tidy.lm()}) to allow for easier control when plotting categorical parameter estimates.
@@ -93,4 +93,7 @@ ggplot(data = d0,
 }
 \seealso{
 \link[broom:tidy.lm]{broom::tidy.lm()}
+}
+\author{
+Guy J. Abel
 }
