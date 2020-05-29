@@ -61,32 +61,34 @@ Note: Currently ordered factor not supported in `tidycat`, hence their
 removal in `mutate_if()` above
 
 The `tidy_categorical()` function adds further columns (`variable`,
-`level`, `effect` and `reference`) to the `broom::tidy()` output to help
-manage categorical variables
+`level` and `effect`) to the `broom::tidy()` output to help manage
+categorical variables
 
 ``` r
 library(tidycat)
 m0 %>%
   tidy() %>%
   tidy_categorical(m = m0, include_reference =  FALSE)
-#> # A tibble: 12 x 9
-#>    term   estimate std.error statistic  p.value variable  level effect reference
-#>    <chr>     <dbl>     <dbl>     <dbl>    <dbl> <chr>     <fct> <chr>  <chr>    
-#>  1 (Inte~   -5.91      1.03      -5.74 9.61e- 9 (Interce~ (Int~ main   Non-Base~
-#>  2 agegp~    1.61      1.07       1.51 1.32e- 1 agegp     35-44 main   Non-Base~
-#>  3 agegp~    2.98      1.02       2.90 3.68e- 3 agegp     45-54 main   Non-Base~
-#>  4 agegp~    3.36      1.02       3.29 9.91e- 4 agegp     55-64 main   Non-Base~
-#>  5 agegp~    3.73      1.03       3.64 2.78e- 4 agegp     65-74 main   Non-Base~
-#>  6 agegp~    3.68      1.06       3.46 5.43e- 4 agegp     75+   main   Non-Base~
-#>  7 tobgp~    0.341     0.205      1.66 9.72e- 2 tobgp     10-19 main   Non-Base~
-#>  8 tobgp~    0.396     0.246      1.61 1.07e- 1 tobgp     20-29 main   Non-Base~
-#>  9 tobgp~    0.868     0.277      3.14 1.70e- 3 tobgp     30+   main   Non-Base~
-#> 10 alcgp~    1.12      0.238      4.70 2.55e- 6 alcgp     40-79 main   Non-Base~
-#> 11 alcgp~    1.45      0.263      5.51 3.68e- 8 alcgp     80-1~ main   Non-Base~
-#> 12 alcgp~    2.12      0.288      7.36 1.90e-13 alcgp     120+  main   Non-Base~
+#> # A tibble: 12 x 8
+#>    term       estimate std.error statistic  p.value variable    level     effect
+#>    <chr>         <dbl>     <dbl>     <dbl>    <dbl> <chr>       <fct>     <chr> 
+#>  1 (Intercep~   -5.91      1.03      -5.74 9.61e- 9 (Intercept) (Interce~ main  
+#>  2 agegp35-44    1.61      1.07       1.51 1.32e- 1 agegp       35-44     main  
+#>  3 agegp45-54    2.98      1.02       2.90 3.68e- 3 agegp       45-54     main  
+#>  4 agegp55-64    3.36      1.02       3.29 9.91e- 4 agegp       55-64     main  
+#>  5 agegp65-74    3.73      1.03       3.64 2.78e- 4 agegp       65-74     main  
+#>  6 agegp75+      3.68      1.06       3.46 5.43e- 4 agegp       75+       main  
+#>  7 tobgp10-19    0.341     0.205      1.66 9.72e- 2 tobgp       10-19     main  
+#>  8 tobgp20-29    0.396     0.246      1.61 1.07e- 1 tobgp       20-29     main  
+#>  9 tobgp30+      0.868     0.277      3.14 1.70e- 3 tobgp       30+       main  
+#> 10 alcgp40-79    1.12      0.238      4.70 2.55e- 6 alcgp       40-79     main  
+#> 11 alcgp80-1~    1.45      0.263      5.51 3.68e- 8 alcgp       80-119    main  
+#> 12 alcgp120+     2.12      0.288      7.36 1.90e-13 alcgp       120+      main
 ```
 
-Include additional rows for reference category terms and column to
+## Additional rows on broom::tidy() for reference categories
+
+Include additional rows for reference category terms and a column to
 indicate their location by setting `include_reference = TRUE` (default).
 Setting `exponentiate = TRUE` ensures the parameter estimates in the
 reference group are set to one instead of zero (even odds in the
@@ -168,20 +170,20 @@ d0 <- m0 %>%
 
 d0 %>%
   select(-(3:5))
-#> # A tibble: 11 x 8
-#>    term      estimate conf.low conf.high variable level  effect reference       
-#>    <chr>        <dbl>    <dbl>     <dbl> <chr>    <fct>  <chr>  <chr>           
-#>  1 agegp35-~    1.61   -0.100      4.54  agegp    35-44  main   Non-Baseline Ca~
-#>  2 agegp45-~    2.98    1.41       5.86  agegp    45-54  main   Non-Baseline Ca~
-#>  3 agegp55-~    3.36    1.81       6.24  agegp    55-64  main   Non-Baseline Ca~
-#>  4 agegp65-~    3.73    2.16       6.62  agegp    65-74  main   Non-Baseline Ca~
-#>  5 agegp75+     3.68    1.99       6.61  agegp    75+    main   Non-Baseline Ca~
-#>  6 tobgp10-~    0.341  -0.0644     0.742 tobgp    10-19  main   Non-Baseline Ca~
-#>  7 tobgp20-~    0.396  -0.0935     0.872 tobgp    20-29  main   Non-Baseline Ca~
-#>  8 tobgp30+     0.868   0.319      1.41  tobgp    30+    main   Non-Baseline Ca~
-#>  9 alcgp40-~    1.12    0.665      1.60  alcgp    40-79  main   Non-Baseline Ca~
-#> 10 alcgp80-~    1.45    0.939      1.97  alcgp    80-119 main   Non-Baseline Ca~
-#> 11 alcgp120+    2.12    1.56       2.69  alcgp    120+   main   Non-Baseline Ca~
+#> # A tibble: 11 x 7
+#>    term        estimate conf.low conf.high variable level  effect
+#>    <chr>          <dbl>    <dbl>     <dbl> <chr>    <fct>  <chr> 
+#>  1 agegp35-44     1.61   -0.100      4.54  agegp    35-44  main  
+#>  2 agegp45-54     2.98    1.41       5.86  agegp    45-54  main  
+#>  3 agegp55-64     3.36    1.81       6.24  agegp    55-64  main  
+#>  4 agegp65-74     3.73    2.16       6.62  agegp    65-74  main  
+#>  5 agegp75+       3.68    1.99       6.61  agegp    75+    main  
+#>  6 tobgp10-19     0.341  -0.0644     0.742 tobgp    10-19  main  
+#>  7 tobgp20-29     0.396  -0.0935     0.872 tobgp    20-29  main  
+#>  8 tobgp30+       0.868   0.319      1.41  tobgp    30+    main  
+#>  9 alcgp40-79     1.12    0.665      1.60  alcgp    40-79  main  
+#> 10 alcgp80-119    1.45    0.939      1.97  alcgp    80-119 main  
+#> 11 alcgp120+      2.12    1.56       2.69  alcgp    120+   main
 
 ggplot(data = d0,
         mapping = aes(x = term, y = estimate, ymin = conf.low, ymax = conf.high,
@@ -347,5 +349,10 @@ ggplot(data = d1 %>%
 ```
 
 <img src="readme/fig/unnamed-chunk-15-1.png" width="100%" />
+
+### Issues
+
+If you have any trouble or suggestions please let me know by creating an
+issue on the [tidycat Github](https://github.com/guyabel/tidycat/issues)
 
     #> [1] TRUE

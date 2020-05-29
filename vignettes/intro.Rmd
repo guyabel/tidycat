@@ -33,7 +33,7 @@ tidy(m0)
 ```
 Note: Currently ordered factor not supported in `tidycat`, hence their removal in `mutate_if()` above
 
-The `tidy_categorical()` function adds further columns (`variable`, `level`, `effect` and `reference`) to the `broom::tidy()` output to help manage categorical variables
+The `tidy_categorical()` function adds further columns (`variable`, `level` and `effect`) to the `broom::tidy()` output to help manage categorical variables
 
 ```{r}
 library(tidycat)
@@ -42,7 +42,9 @@ m0 %>%
   tidy_categorical(m = m0, include_reference =  FALSE)
 ```
 
-Include additional rows for reference category terms and column to indicate their location by setting `include_reference = TRUE` (default). Setting `exponentiate = TRUE` ensures the parameter estimates in the reference group are set to one instead of zero (even odds in the logistic regression example below).
+## Additional rows on broom::tidy() for reference categories
+
+Include additional rows for reference category terms and a column to indicate their location by setting `include_reference = TRUE` (default). Setting `exponentiate = TRUE` ensures the parameter estimates in the reference group are set to one instead of zero (even odds in the logistic regression example below).
 
 ```{r}
 m0 %>%
@@ -178,3 +180,6 @@ ggplot(data = d1 %>%
    geom_pointrange()
 ```
 
+### Issues
+
+If you have any trouble or suggestions please let me know by creating an issue on the [tidycat Github](https://github.com/guyabel/tidycat/issues)

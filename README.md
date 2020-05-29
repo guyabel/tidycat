@@ -86,7 +86,9 @@ m0 %>%
 #> 12 alcgp~    2.12      0.288      7.36 1.90e-13 alcgp     120+  main   Non-Base~
 ```
 
-Include additional rows for reference category terms and column to
+## Additional rows on broom::tidy() for reference categories
+
+Include additional rows for reference category terms and a column to
 indicate their location by setting `include_reference = TRUE` (default).
 Setting `exponentiate = TRUE` ensures the parameter estimates in the
 reference group are set to one instead of zero (even odds in the

@@ -98,7 +98,7 @@ tidy_categorical <- function(
     dplyr::mutate_if(is.numeric, ~ifelse(is.na(.), ifelse(exponentiate, 1, 0), .)) %>%
     dplyr::select(-variable, -level, -effect, dplyr::everything(), variable, level, effect)
 
-  if(!is.null(reference_label)){
+  if(!is.null(reference_label) & include_reference){
     x <- x %>%
       dplyr::group_by(variable) %>%
       dplyr::mutate(
