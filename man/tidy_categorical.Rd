@@ -56,17 +56,17 @@ tidy(m0)
 # add further columns to tidy output to help manage categorical variables
 m0 \%>\%
  tidy() \%>\%
- tidy_categorical(m = m0)
+ tidy_categorical(m = m0, include_reference = FALSE)
 
 # include reference categories and column to indicate the additional terms
 m0 \%>\%
  tidy() \%>\%
- tidy_categorical(m = m0, include_reference = FALSE, reference_label = "Reference")
+ tidy_categorical(m = m0)
 
 # coefficient plots
 d0 <- m0 \%>\%
   tidy(conf.int = TRUE) \%>\%
-  tidy_categorical(m = m0, include_reference = FALSE, reference_label = "Baseline") \%>\%
+  tidy_categorical(m = m0) \%>\%
   # drop the intercept term
   slice(-1)
 d0
@@ -81,7 +81,7 @@ ggplot(data = d0 \%>\% drop_na(),
   geom_hline(yintercept = 0, linetype = "dashed") +
   geom_pointrange()
 
-# enhanced coefficient plot using additional columns from tidy_categroical and ggforce::facet_row()
+# enhanced coefficient plot using additional columns from tidy_categorical and ggforce::facet_row()
 library(ggforce)
 ggplot(data = d0,
        mapping = aes(x = level, colour = reference,
