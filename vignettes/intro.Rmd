@@ -45,7 +45,7 @@ And the development version from [GitHub](https://github.com/) with:
 devtools::install_github("guyabel/tidycat")
 ```
 
-## Additional columns on broom::tidy() for categorical parameter estimates
+## Additional columns for categorical parameter estimates
 
 The `tidy()` function in the broom package takes the messy output of built-in functions in R, such as `lm()`, and turns them into tidy data frames.
 
@@ -69,7 +69,7 @@ m0 %>%
   tidy_categorical(m = m0, include_reference =  FALSE)
 ```
 
-## Additional rows on broom::tidy() for reference categories
+## Additional rows for reference categories
 
 Include additional rows for reference category terms and a column to indicate their location by setting `include_reference = TRUE` (default). Setting `exponentiate = TRUE` ensures the parameter estimates in the reference group are set to one instead of zero (even odds in the logistic regression example below).
 
