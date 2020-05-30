@@ -1,9 +1,13 @@
 ---
 title: "The tidycat package: expand broom::tidy() output for categorical parameter estimates"
 output:
-  rmarkdown::html_vignette:
-    toc: true 
-    readme: true
+  html_document:
+    fig_caption: false
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: true
+    toc_depth: 2
 vignette: >
   %\VignetteIndexEntry{The tidycat package: expand broom::tidy() outputs for categorical parameter estimates}
   %\VignetteEngine{knitr::rmarkdown}
@@ -22,6 +26,9 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
+## Introduction
+
+The `tidycat` package includes the `tidy_categorical()` function to expand `broom::tidy()` outputs for categorical parameter estimates.
 
 ## Installation
 
@@ -37,10 +44,6 @@ And the development version from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("guyabel/tidycat")
 ```
-
-## Introduction
-
-The `tidycat` package includes the `tidy_categorical()` function to expand `broom::tidy()` outputs for categorical parameter estimates.
 
 ## Additional columns on broom::tidy() for categorical parameter estimates
 
