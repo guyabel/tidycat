@@ -85,9 +85,9 @@ d1 %>%
 The expanded data frame from `tidy_categorical()` of parameter estimates
 can be particularly useful for creating coefficient plots, allowing:
 
-  - Grouping terms from the same categorical variable from the
+  - grouping terms from the same categorical variable from the
     additional columns.
-  - Including reference categories in a coefficient plot from the
+  - inclusion of reference categories in a coefficient plot from the
     additional rows, allowing the reader to better grasp the meaning of
     the parameter estimates in each categorical variable.
 
