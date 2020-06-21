@@ -27,6 +27,7 @@ frames.
 ``` r
 library(dplyr)
 library(broom)
+
 m1 <- mtcars %>%
   mutate(transmission = recode_factor(am, `0` = "automatic", `1` = "manual")) %>%
   lm(mpg ~ qsec + as.factor(cyl) + wt * transmission , data = .)
@@ -54,8 +55,8 @@ The `tidy_categorical()` function adds
 
 It requires two inputs
 
-  - a data frame `d` of parameter estimates from a model (from
-    `broom::tidy()`)
+  - a data frame `d` of parameter estimates from a model from
+    `broom::tidy()`
   - the corresponding model object `m` passed to `broom::tidy()`
 
 For example:
