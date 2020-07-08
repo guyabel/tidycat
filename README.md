@@ -30,19 +30,19 @@ library(broom)
 
 m1 <- mtcars %>%
   mutate(transmission = recode_factor(am, `0` = "automatic", `1` = "manual")) %>%
-  lm(mpg ~ qsec + as.factor(cyl) + wt * transmission , data = .)
+  lm(mpg ~ as.factor(cyl) + transmission + wt *  as.factor(cyl), data = .)
 
 tidy(m1)
 #> # A tibble: 7 x 5
-#>   term                  estimate std.error statistic p.value
-#>   <chr>                    <dbl>     <dbl>     <dbl>   <dbl>
-#> 1 (Intercept)             10.8       9.24      1.17  0.254  
-#> 2 qsec                     0.973     0.454     2.14  0.0419 
-#> 3 as.factor(cyl)6         -0.545     1.62     -0.335 0.740  
-#> 4 as.factor(cyl)8         -0.364     2.52     -0.144 0.886  
-#> 5 wt                      -2.91      0.827    -3.53  0.00166
-#> 6 transmissionmanual      13.5       3.94      3.43  0.00210
-#> 7 wt:transmissionmanual   -3.97      1.31     -3.03  0.00558
+#>   term               estimate std.error statistic       p.value
+#>   <chr>                 <dbl>     <dbl>     <dbl>         <dbl>
+#> 1 (Intercept)          41.5        4.54     9.14  0.00000000190
+#> 2 as.factor(cyl)6      -8.66      10.4     -0.836 0.411        
+#> 3 as.factor(cyl)8     -16.9        5.27    -3.20  0.00374      
+#> 4 transmissionmanual   -0.902      1.51    -0.595 0.557        
+#> 5 wt                   -6.19       1.65    -3.75  0.000937     
+#> 6 as.factor(cyl)6:wt    2.12       3.40     0.625 0.538        
+#> 7 as.factor(cyl)8:wt    3.84       1.77     2.17  0.0399
 ```
 
 The `tidy_categorical()` function adds
@@ -69,18 +69,18 @@ d1 <- m1 %>%
 d1 %>%
   select(-(3:5))
 #> # A tibble: 10 x 8
-#>    term       estimate conf.low conf.high variable   level  effect  reference   
-#>    <chr>         <dbl>    <dbl>     <dbl> <chr>      <fct>  <chr>   <chr>       
-#>  1 (Intercep~   10.8    -8.25       29.8  (Intercep~ (Inte~ main    Non-Baselin~
-#>  2 qsec          0.973   0.0386      1.91 qsec       qsec   main    Non-Baselin~
-#>  3 <NA>          0       0           0    as.factor~ 4      main    Baseline Ca~
-#>  4 as.factor~   -0.545  -3.89        2.80 as.factor~ 6      main    Non-Baselin~
-#>  5 as.factor~   -0.364  -5.56        4.83 as.factor~ 8      main    Non-Baselin~
-#>  6 wt           -2.91   -4.62       -1.21 wt         wt     main    Non-Baselin~
-#>  7 <NA>          0       0           0    transmiss~ autom~ main    Baseline Ca~
-#>  8 transmiss~   13.5     5.40       21.6  transmiss~ manual main    Non-Baselin~
-#>  9 <NA>          0       0           0    wt:transm~ autom~ intera~ Baseline Ca~
-#> 10 wt:transm~   -3.97   -6.67       -1.28 wt:transm~ manual intera~ Non-Baselin~
+#>    term      estimate conf.low conf.high variable    level  effect  reference   
+#>    <chr>        <dbl>    <dbl>     <dbl> <chr>       <fct>  <chr>   <chr>       
+#>  1 (Interce~   41.5     32.1       50.8  (Intercept) (Inte~ main    Non-Baselin~
+#>  2 <NA>         0        0          0    as.factor(~ 4      main    Baseline Ca~
+#>  3 as.facto~   -8.66   -30.0       12.7  as.factor(~ 6      main    Non-Baselin~
+#>  4 as.facto~  -16.9    -27.7       -6.00 as.factor(~ 8      main    Non-Baselin~
+#>  5 <NA>         0        0          0    transmissi~ autom~ main    Baseline Ca~
+#>  6 transmis~   -0.902   -4.02       2.22 transmissi~ manual main    Non-Baselin~
+#>  7 wt          -6.19    -9.59      -2.79 wt          wt     main    Non-Baselin~
+#>  8 <NA>         0        0          0    as.factor(~ 4      intera~ Baseline Ca~
+#>  9 as.facto~    2.12    -4.87       9.12 as.factor(~ 6      intera~ Non-Baselin~
+#> 10 as.facto~    3.84     0.192      7.50 as.factor(~ 8      intera~ Non-Baselin~
 ```
 
 The expanded data frame from `tidy_categorical()` of parameter estimates
@@ -95,10 +95,13 @@ can be particularly useful for creating coefficient plots, allowing:
 For example:
 
 ``` r
+library(forcats)
 library(ggplot2)
 library(ggforce)
+
 d1 %>%
   slice(-1) %>%
+  mutate(variable = fct_inorder(variable)) %>%
   ggplot(mapping = aes(x = level, y = estimate, colour = reference,
                        ymin = conf.low, ymax = conf.high)) +
   facet_row(facets = "variable", scales = "free_x", space = "free") +
