@@ -18,6 +18,16 @@ For full documentation, see the package vignette: [The tidycat package:
 expand broom::tidy() output for categorical parameter
 estimates](https://cran.r-project.org/web/packages/tidycat/vignettes/intro.html)
 
+## Limitations
+
+The `tidy_categorical()` function will probably not work as expected for
+non-default contrasts such as `contr.helmert()` and when one or more
+model parameters are rank deficient. It also only supports a limited
+range of models; `lm()` or `glm()` should be fine. For more complex
+cases, or an alternative method do create great coefficient plots, see
+the development version of the `ggcoef()` function in the
+[JLutils](https://github.com/larmarange/JLutils) package.
+
 ## Hello World
 
 The `tidy()` function in the broom package takes the messy output of
@@ -63,6 +73,7 @@ For example:
 
 ``` r
 library(tidycat)
+#> Warning: package 'tidycat' was built under R version 4.0.3
 d1 <- m1 %>%
   tidy(conf.int = TRUE) %>%
   tidy_categorical(m = m1)
@@ -98,6 +109,7 @@ For example:
 library(forcats)
 library(ggplot2)
 library(ggforce)
+#> Warning: package 'ggforce' was built under R version 4.0.3
 
 d1 %>%
   slice(-1) %>%
