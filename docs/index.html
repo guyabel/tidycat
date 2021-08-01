@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">tidycat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -97,11 +97,6 @@
 <a href="#introduction" class="anchor"></a>Introduction</h2>
 <p>The <code>tidycat</code> package includes the <code><a href="reference/tidy_categorical.html">tidy_categorical()</a></code> function to expand <code><a href="https://rdrr.io/pkg/generics/man/tidy.html">broom::tidy()</a></code> outputs for categorical parameter estimates.</p>
 </div>
-<div id="documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#documentation" class="anchor"></a>Documentation</h2>
-<p>For full documentation, see the package vignette: <a href="https://cran.r-project.org/web/packages/tidycat/vignettes/intro.html">The tidycat package: expand broom::tidy() output for categorical parameter estimates</a></p>
-</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -117,6 +112,11 @@
 <h2 class="hasAnchor">
 <a href="#limitations" class="anchor"></a>Limitations</h2>
 <p>The <code><a href="reference/tidy_categorical.html">tidy_categorical()</a></code> function will probably not work as expected for non-default contrasts such as <code><a href="https://rdrr.io/r/stats/contrast.html">contr.helmert()</a></code> and when one or more model parameters are rank deficient. It also only supports a limited range of models; <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> or <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> should be fine. For more complex cases, or an alternative method do create great coefficient plots, see the <code>ggcoef()</code> function in the <a href="https://ggobi.github.io/ggally/reference/ggcoef_model.html">GGally</a> package, which went through a major upgrade around the same time as I developed tidycat.</p>
+</div>
+<div id="documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation" class="anchor"></a>Documentation</h2>
+<p>For full documentation, see the package vignette: <a href="https://guyabel.github.io/tidycat/articles/intro.html">The tidycat package: expand broom::tidy() output for categorical parameter estimates</a></p>
 </div>
 <div id="hello-world" class="section level2">
 <h2 class="hasAnchor">

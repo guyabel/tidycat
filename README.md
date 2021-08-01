@@ -48,7 +48,7 @@ developed tidycat.
 
 For full documentation, see the package vignette: [The tidycat package:
 expand broom::tidy() output for categorical parameter
-estimates](https://guyabel.github.io/wcde/articles/intro.html)
+estimates](https://guyabel.github.io/tidycat/articles/intro.html)
 
 ## Hello World
 
