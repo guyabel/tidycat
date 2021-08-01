@@ -10,7 +10,7 @@
 #' @param exponentiate Logical indicating whether or not the results in \link[broom:tidy.lm]{broom::tidy.lm()} are exponentiated. Defaults to `FALSE`.
 #' @param n_level Logical indicating whether or not to include a column `n_level` for the number of observations per category. Defaults to `FALSE`.
 #'
-#' @return Expanded \link[tibble:tibble]{tibble::tibble()} from the version passed to `d` including additional columns:
+#' @return Expanded \link{[tibble][tibble::tibble-package]} from the version passed to `d` including additional columns:
 #' \item{variable}{The name of the variable that the regression term belongs to.}
 #' \item{level}{The level of the categorical variable that the regression term belongs to. Will be an the term name for numeric variables.}
 #' \item{effect}{The type of term (`main` or `interaction`)}

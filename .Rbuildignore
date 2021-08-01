@@ -4,3 +4,9 @@
 ^README
 ^doc$
 ^Meta$
+^build_package\.R$
+^hex$
+^README$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$

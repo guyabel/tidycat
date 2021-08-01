@@ -5,6 +5,10 @@
 
 <!-- badges: start -->
 
+[![CRAN
+status](https://www.r-pkg.org/badges/version/tidycat)](https://CRAN.R-project.org/package=tidycat)
+[![Lifecycle:
+superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 <!-- badges: end -->
 
 ## Introduction
@@ -12,11 +16,21 @@
 The `tidycat` package includes the `tidy_categorical()` function to
 expand `broom::tidy()` outputs for categorical parameter estimates.
 
-## Documentation
+## Installation
 
-For full documentation, see the package vignette: [The tidycat package:
-expand broom::tidy() output for categorical parameter
-estimates](https://cran.r-project.org/web/packages/tidycat/vignettes/intro.html)
+You can install the released version of tidycat from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("tidycat")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("guyabel/tidycat")
+```
 
 ## Limitations
 
@@ -25,8 +39,16 @@ non-default contrasts such as `contr.helmert()` and when one or more
 model parameters are rank deficient. It also only supports a limited
 range of models; `lm()` or `glm()` should be fine. For more complex
 cases, or an alternative method do create great coefficient plots, see
-the development version of the `ggcoef()` function in the
-[JLutils](https://github.com/larmarange/JLutils) package.
+the `ggcoef()` function in the
+[GGally](https://ggobi.github.io/ggally/reference/ggcoef_model.html)
+package, which went through a major upgrade around the same time as I
+developed tidycat.
+
+## Documentation
+
+For full documentation, see the package vignette: [The tidycat package:
+expand broom::tidy() output for categorical parameter
+estimates](https://guyabel.github.io/wcde/articles/intro.html)
 
 ## Hello World
 
@@ -57,23 +79,22 @@ tidy(m1)
 
 The `tidy_categorical()` function adds
 
-  - further columns (`variable`, `level` and `effect`) to the
+-   further columns (`variable`, `level` and `effect`) to the
     `broom::tidy()` output to help manage categorical variables
-  - further rows for reference category terms and a column to indicate
+-   further rows for reference category terms and a column to indicate
     their location (`reference`) when setting `include_reference = TRUE`
     (default)
 
 It requires two inputs
 
-  - a data frame `d` of parameter estimates from a model from
+-   a data frame `d` of parameter estimates from a model from
     `broom::tidy()`
-  - the corresponding model object `m` passed to `broom::tidy()`
+-   the corresponding model object `m` passed to `broom::tidy()`
 
 For example:
 
 ``` r
 library(tidycat)
-#> Warning: package 'tidycat' was built under R version 4.0.3
 d1 <- m1 %>%
   tidy(conf.int = TRUE) %>%
   tidy_categorical(m = m1)
@@ -97,9 +118,9 @@ d1 %>%
 The expanded data frame from `tidy_categorical()` of parameter estimates
 can be particularly useful for creating coefficient plots, allowing:
 
-  - grouping terms from the same categorical variable from the
+-   grouping terms from the same categorical variable from the
     additional columns.
-  - inclusion of reference categories in a coefficient plot from the
+-   inclusion of reference categories in a coefficient plot from the
     additional rows, allowing the reader to better grasp the meaning of
     the parameter estimates in each categorical variable.
 
@@ -109,7 +130,6 @@ For example:
 library(forcats)
 library(ggplot2)
 library(ggforce)
-#> Warning: package 'ggforce' was built under R version 4.0.3
 
 d1 %>%
   slice(-1) %>%
@@ -121,20 +141,4 @@ d1 %>%
   geom_pointrange()
 ```
 
-![](./README-files/unnamed-chunk-4-1.png)<!-- -->
-
-## Installation
-
-You can install the released version of tidycat from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("tidycat")
-```
-
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("guyabel/tidycat")
-```
+![](https://raw.githubusercontent.com/guyabel/tidycat/master/README-files/unnamed-chunk-4-1.png)<!-- -->

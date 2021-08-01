@@ -1,12 +1,12 @@
 Package: tidycat
 Type: Package
 Title: Expand Tidy Output for Categorical Parameter Estimates
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(person(c("Guy", "J."), "Abel", role = c("aut", "cre"),
                     email = "g.j.abel@gmail.com",
                     comment = c(ORCID = "0000-0002-4893-5687")))
 Maintainer: Guy J. Abel <g.j.abel@gmail.com>
-URL: https://github.com/guyabel/tidycat
+URL: https://guyabel.github.io/tidycat
 BugReports: https://github.com/guyabel/tidycat/issues
 Description: Create additional rows and columns on broom::tidy() output to allow for easier control on categorical parameter estimates. 
 License: GPL-3
@@ -26,6 +26,8 @@ Suggests:
     ggplot2,
     ggforce,
     knitr,
-    rmarkdown
+    rmarkdown,
+    spelling
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
+Language: en-US

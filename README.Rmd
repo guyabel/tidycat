@@ -15,21 +15,37 @@ knitr::opts_chunk$set(
 <img src='./man/figures/logo.png' align="right" height="139" />
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/tidycat)](https://CRAN.R-project.org/package=tidycat)
+[![Lifecycle: superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 <!-- badges: end -->
 
 ## Introduction
 
 The `tidycat` package includes the `tidy_categorical()` function to expand `broom::tidy()` outputs for categorical parameter estimates.
 
-## Documentation
+## Installation
 
-For full documentation, see the package vignette: [The tidycat package: expand broom::tidy() output for categorical parameter estimates](https://cran.r-project.org/web/packages/tidycat/vignettes/intro.html)
+You can install the released version of tidycat from [CRAN](https://CRAN.R-project.org) with:
 
+``` r
+install.packages("tidycat")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("guyabel/tidycat")
+```
 
 ## Limitations
 
-The `tidy_categorical()` function will probably not work as expected for non-default contrasts such as `contr.helmert()` and when one or more model parameters are rank deficient. It also only supports a limited range of models; `lm()` or `glm()` should be fine. For more complex cases, or an alternative method do create great coefficient plots, see the development version of the `ggcoef()` function in the [JLutils](https://github.com/larmarange/JLutils) package.
-    
+The `tidy_categorical()` function will probably not work as expected for non-default contrasts such as `contr.helmert()` and when one or more model parameters are rank deficient. It also only supports a limited range of models; `lm()` or `glm()` should be fine. For more complex cases, or an alternative method do create great coefficient plots, see the `ggcoef()` function in the [GGally](https://ggobi.github.io/ggally/reference/ggcoef_model.html) package, which went through a major upgrade around the same time as I developed tidycat.
+
+## Documentation
+
+For full documentation, see the package vignette: [The tidycat package: expand broom::tidy() output for categorical parameter estimates](https://guyabel.github.io/tidycat/articles/intro.html)
+ 
 ## Hello World
 
 The `tidy()` function in the broom package takes the messy output of built-in functions in R, such as `lm()`, and turns them into tidy data frames.
@@ -72,7 +88,7 @@ The expanded data frame from `tidy_categorical()` of parameter estimates can be 
 
 For example:
 
-```{r, fig.width=8, fig.height=4}
+```{r fig.height=4, fig.width=8, eval=FALSE}
 library(forcats)
 library(ggplot2)
 library(ggforce)
@@ -87,17 +103,12 @@ d1 %>%
   geom_pointrange()
 ```
 
-## Installation
 
-You can install the released version of tidycat from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("tidycat")
+```{r echo=FALSE}
+# eval = FALSE above and this because pkgdown wont inlcude plot from readme... not sure why
+knitr::include_graphics("https://raw.githubusercontent.com/guyabel/tidycat/master/README-files/unnamed-chunk-4-1.png")
 ```
 
-And the development version from [GitHub](https://github.com/) with:
 
-``` r
-# install.packages("devtools")
-devtools::install_github("guyabel/tidycat")
-```
+
+
