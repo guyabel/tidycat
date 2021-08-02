@@ -6,8 +6,8 @@ Authors@R: c(person(c("Guy", "J."), "Abel", role = c("aut", "cre"),
                     email = "g.j.abel@gmail.com",
                     comment = c(ORCID = "0000-0002-4893-5687")))
 Maintainer: Guy J. Abel <g.j.abel@gmail.com>
-URL: https://guyabel.github.io/tidycat
-BugReports: https://github.com/guyabel/tidycat/issues
+URL: https://guyabel.github.io/tidycat/
+BugReports: https://github.com/guyabel/tidycat/issues/
 Description: Create additional rows and columns on broom::tidy() output to allow for easier control on categorical parameter estimates. 
 License: GPL-3
 Encoding: UTF-8
