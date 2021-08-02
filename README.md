@@ -16,6 +16,8 @@ superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https:/
 The `tidycat` package includes the `tidy_categorical()` function to
 expand `broom::tidy()` outputs for categorical parameter estimates.
 
+See the [pkgdown site](http://guyabel.github.io/tidycat/) for full details.
+
 ## Installation
 
 You can install the released version of tidycat from
