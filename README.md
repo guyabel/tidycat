@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<img src='./man/figures/logo.png' align="right" height="139" />
+# tidycat
 
 <!-- badges: start -->
 
@@ -10,6 +10,8 @@ status](https://www.r-pkg.org/badges/version/tidycat)](https://CRAN.R-project.or
 [![Lifecycle:
 superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 <!-- badges: end -->
+
+<img src='./man/figures/logo.png' align="right" height="139" />
 
 ## Introduction
 
