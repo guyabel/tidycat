@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # tidycat
 
 <!-- badges: start -->
+
 [![CRAN status](https://www.r-pkg.org/badges/version/tidycat)](https://CRAN.R-project.org/package=tidycat)
 [![Lifecycle: superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 <!-- badges: end -->
