@@ -8,16 +8,19 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "./README-files/"
+  # fig.path = "./README-files/"
+  out.width = "100%"
 )
 ```
 
-<img src='./man/figures/logo.png' align="right" height="139" />
+# tidycat
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/tidycat)](https://CRAN.R-project.org/package=tidycat)
 [![Lifecycle: superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 <!-- badges: end -->
+
+<img src='./man/figures/logo.png' align="right" height="139" />
 
 ## Introduction
 
