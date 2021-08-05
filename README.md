@@ -9,6 +9,7 @@
 status](https://www.r-pkg.org/badges/version/tidycat)](https://CRAN.R-project.org/package=tidycat)
 [![Lifecycle:
 superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
+[![R-CMD-check](https://github.com/guyabel/tidycat/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/tidycat/actions)
 <!-- badges: end -->
 
 <img src='./man/figures/logo.png' align="right" height="139" />
@@ -106,18 +107,18 @@ d1 <- m1 %>%
 d1 %>%
   select(-(3:5))
 #> # A tibble: 10 x 8
-#>    term      estimate conf.low conf.high variable    level  effect  reference   
-#>    <chr>        <dbl>    <dbl>     <dbl> <chr>       <fct>  <chr>   <chr>       
-#>  1 (Interce~   41.5     32.1       50.8  (Intercept) (Inte~ main    Non-Baselin~
-#>  2 <NA>         0        0          0    as.factor(~ 4      main    Baseline Ca~
-#>  3 as.facto~   -8.66   -30.0       12.7  as.factor(~ 6      main    Non-Baselin~
-#>  4 as.facto~  -16.9    -27.7       -6.00 as.factor(~ 8      main    Non-Baselin~
-#>  5 <NA>         0        0          0    transmissi~ autom~ main    Baseline Ca~
-#>  6 transmis~   -0.902   -4.02       2.22 transmissi~ manual main    Non-Baselin~
-#>  7 wt          -6.19    -9.59      -2.79 wt          wt     main    Non-Baselin~
-#>  8 <NA>         0        0          0    as.factor(~ 4      intera~ Baseline Ca~
-#>  9 as.facto~    2.12    -4.87       9.12 as.factor(~ 6      intera~ Non-Baselin~
-#> 10 as.facto~    3.84     0.192      7.50 as.factor(~ 8      intera~ Non-Baselin~
+#>    term               estimate conf.low conf.high variable level effect reference
+#>    <chr>                 <dbl>    <dbl>     <dbl> <chr>    <fct> <chr>  <chr>    
+#>  1 (Intercept)          41.5     32.1       50.8  (Interc~ (Int~ main   Non-Base~
+#>  2 <NA>                  0        0          0    as.fact~ 4     main   Baseline~
+#>  3 as.factor(cyl)6      -8.66   -30.0       12.7  as.fact~ 6     main   Non-Base~
+#>  4 as.factor(cyl)8     -16.9    -27.7       -6.00 as.fact~ 8     main   Non-Base~
+#>  5 <NA>                  0        0          0    transmi~ auto~ main   Baseline~
+#>  6 transmissionmanual   -0.902   -4.02       2.22 transmi~ manu~ main   Non-Base~
+#>  7 wt                   -6.19    -9.59      -2.79 wt       wt    main   Non-Base~
+#>  8 <NA>                  0        0          0    as.fact~ 4     inter~ Baseline~
+#>  9 as.factor(cyl)6:wt    2.12    -4.87       9.12 as.fact~ 6     inter~ Non-Base~
+#> 10 as.factor(cyl)8:wt    3.84     0.192      7.50 as.fact~ 8     inter~ Non-Base~
 ```
 
 The expanded data frame from `tidy_categorical()` of parameter estimates

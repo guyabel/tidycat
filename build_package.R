@@ -18,7 +18,7 @@ usethis::use_github_actions()
 usethis::git_remotes()
 usethis::gh_token_help()
 
-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
+
 gitcreds::gitcreds_set()
 usethis::use_github(protocol = "https", authtoken = GITHUB_PAT)
 usethis::use_github_links()
@@ -26,6 +26,9 @@ usethis::use_github_links()
 usethis::use_github_action("check-standard.yaml")
 https://raw.githubusercontent.com/r-lib/actions/master/examples/check-standard.yaml
 usethis::use_github_action_check_standard()
+
+usethis::use_github_actions_badge()
+usethis::use_github_action("pkgdown")
 
 roxygen2::roxygenise()
 
