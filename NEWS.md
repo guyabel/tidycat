@@ -11,3 +11,4 @@
 
 * Added pkgdown
 * Added stickers
+* Github actions working
