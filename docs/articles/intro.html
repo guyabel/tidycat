@@ -159,20 +159,20 @@
   <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/tidy_categorical.html">tidy_categorical</a></span><span class="op">(</span>m <span class="op">=</span> <span class="va">m0</span>, include_reference <span class="op">=</span>  <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 12 x 8</span>
-<span class="co">#&gt;    term       estimate std.error statistic  p.value variable    level     effect</span>
-<span class="co">#&gt;    &lt;chr&gt;         &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;fct&gt;     &lt;chr&gt; </span>
-<span class="co">#&gt;  1 (Intercep~   -6.90      1.09      -6.35 2.16e-10 (Intercept) (Interce~ main  </span>
-<span class="co">#&gt;  2 agegp35-44    1.98      1.10       1.79 7.28e- 2 agegp       35-44     main  </span>
-<span class="co">#&gt;  3 agegp45-54    3.78      1.07       3.54 4.07e- 4 agegp       45-54     main  </span>
-<span class="co">#&gt;  4 agegp55-64    4.34      1.07       4.07 4.69e- 5 agegp       55-64     main  </span>
-<span class="co">#&gt;  5 agegp65-74    4.90      1.08       4.55 5.39e- 6 agegp       65-74     main  </span>
-<span class="co">#&gt;  6 agegp75+      4.83      1.12       4.30 1.67e- 5 agegp       75+       main  </span>
-<span class="co">#&gt;  7 tobgp10-19    0.438     0.228      1.92 5.50e- 2 tobgp       10-19     main  </span>
-<span class="co">#&gt;  8 tobgp20-29    0.513     0.273      1.88 6.04e- 2 tobgp       20-29     main  </span>
-<span class="co">#&gt;  9 tobgp30+      1.64      0.344      4.77 1.85e- 6 tobgp       30+       main  </span>
-<span class="co">#&gt; 10 alcgp40-79    1.43      0.250      5.74 9.63e- 9 alcgp       40-79     main  </span>
-<span class="co">#&gt; 11 alcgp80-1~    1.98      0.285      6.96 3.51e-12 alcgp       80-119    main  </span>
-<span class="co">#&gt; 12 alcgp120+     3.60      0.385      9.36 8.19e-21 alcgp       120+      main</span></code></pre></div>
+<span class="co">#&gt;    term        estimate std.error statistic  p.value variable    level    effect</span>
+<span class="co">#&gt;    &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;fct&gt;    &lt;chr&gt; </span>
+<span class="co">#&gt;  1 (Intercept)   -6.90      1.09      -6.35 2.16e-10 (Intercept) (Interc~ main  </span>
+<span class="co">#&gt;  2 agegp35-44     1.98      1.10       1.79 7.28e- 2 agegp       35-44    main  </span>
+<span class="co">#&gt;  3 agegp45-54     3.78      1.07       3.54 4.07e- 4 agegp       45-54    main  </span>
+<span class="co">#&gt;  4 agegp55-64     4.34      1.07       4.07 4.69e- 5 agegp       55-64    main  </span>
+<span class="co">#&gt;  5 agegp65-74     4.90      1.08       4.55 5.39e- 6 agegp       65-74    main  </span>
+<span class="co">#&gt;  6 agegp75+       4.83      1.12       4.30 1.67e- 5 agegp       75+      main  </span>
+<span class="co">#&gt;  7 tobgp10-19     0.438     0.228      1.92 5.50e- 2 tobgp       10-19    main  </span>
+<span class="co">#&gt;  8 tobgp20-29     0.513     0.273      1.88 6.04e- 2 tobgp       20-29    main  </span>
+<span class="co">#&gt;  9 tobgp30+       1.64      0.344      4.77 1.85e- 6 tobgp       30+      main  </span>
+<span class="co">#&gt; 10 alcgp40-79     1.43      0.250      5.74 9.63e- 9 alcgp       40-79    main  </span>
+<span class="co">#&gt; 11 alcgp80-119    1.98      0.285      6.96 3.51e-12 alcgp       80-119   main  </span>
+<span class="co">#&gt; 12 alcgp120+      3.60      0.385      9.36 8.19e-21 alcgp       120+     main</span></code></pre></div>
 </div>
 <div id="additional-rows-for-reference-categories" class="section level2">
 <h2 class="hasAnchor">
@@ -280,22 +280,22 @@
 <span class="va">d0</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 14 x 8</span>
-<span class="co">#&gt;    term      estimate conf.low conf.high variable level   effect reference      </span>
-<span class="co">#&gt;    &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;fct&gt;   &lt;chr&gt;  &lt;chr&gt;          </span>
-<span class="co">#&gt;  1 &lt;NA&gt;         0       0          0     agegp    25-34   main   Baseline Categ~</span>
-<span class="co">#&gt;  2 agegp35-~    1.98    0.184      4.95  agegp    35-44   main   Non-Baseline C~</span>
-<span class="co">#&gt;  3 agegp45-~    3.78    2.10       6.71  agegp    45-54   main   Non-Baseline C~</span>
-<span class="co">#&gt;  4 agegp55-~    4.34    2.67       7.27  agegp    55-64   main   Non-Baseline C~</span>
-<span class="co">#&gt;  5 agegp65-~    4.90    3.21       7.84  agegp    65-74   main   Non-Baseline C~</span>
-<span class="co">#&gt;  6 agegp75+     4.83    3.00       7.82  agegp    75+     main   Non-Baseline C~</span>
-<span class="co">#&gt;  7 &lt;NA&gt;         0       0          0     tobgp    0-9g/d~ main   Baseline Categ~</span>
-<span class="co">#&gt;  8 tobgp10-~    0.438  -0.0116     0.885 tobgp    10-19   main   Non-Baseline C~</span>
-<span class="co">#&gt;  9 tobgp20-~    0.513  -0.0290     1.04  tobgp    20-29   main   Non-Baseline C~</span>
-<span class="co">#&gt; 10 tobgp30+     1.64    0.967      2.32  tobgp    30+     main   Non-Baseline C~</span>
-<span class="co">#&gt; 11 &lt;NA&gt;         0       0          0     alcgp    0-39g/~ main   Baseline Categ~</span>
-<span class="co">#&gt; 12 alcgp40-~    1.43    0.955      1.94  alcgp    40-79   main   Non-Baseline C~</span>
-<span class="co">#&gt; 13 alcgp80-~    1.98    1.43       2.55  alcgp    80-119  main   Non-Baseline C~</span>
-<span class="co">#&gt; 14 alcgp120+    3.60    2.87       4.39  alcgp    120+    main   Non-Baseline C~</span>
+<span class="co">#&gt;    term        estimate conf.low conf.high variable level     effect reference  </span>
+<span class="co">#&gt;    &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;fct&gt;     &lt;chr&gt;  &lt;chr&gt;      </span>
+<span class="co">#&gt;  1 &lt;NA&gt;           0       0          0     agegp    25-34     main   Baseline C~</span>
+<span class="co">#&gt;  2 agegp35-44     1.98    0.184      4.95  agegp    35-44     main   Non-Baseli~</span>
+<span class="co">#&gt;  3 agegp45-54     3.78    2.10       6.71  agegp    45-54     main   Non-Baseli~</span>
+<span class="co">#&gt;  4 agegp55-64     4.34    2.67       7.27  agegp    55-64     main   Non-Baseli~</span>
+<span class="co">#&gt;  5 agegp65-74     4.90    3.21       7.84  agegp    65-74     main   Non-Baseli~</span>
+<span class="co">#&gt;  6 agegp75+       4.83    3.00       7.82  agegp    75+       main   Non-Baseli~</span>
+<span class="co">#&gt;  7 &lt;NA&gt;           0       0          0     tobgp    0-9g/day  main   Baseline C~</span>
+<span class="co">#&gt;  8 tobgp10-19     0.438  -0.0116     0.885 tobgp    10-19     main   Non-Baseli~</span>
+<span class="co">#&gt;  9 tobgp20-29     0.513  -0.0290     1.04  tobgp    20-29     main   Non-Baseli~</span>
+<span class="co">#&gt; 10 tobgp30+       1.64    0.967      2.32  tobgp    30+       main   Non-Baseli~</span>
+<span class="co">#&gt; 11 &lt;NA&gt;           0       0          0     alcgp    0-39g/day main   Baseline C~</span>
+<span class="co">#&gt; 12 alcgp40-79     1.43    0.955      1.94  alcgp    40-79     main   Non-Baseli~</span>
+<span class="co">#&gt; 13 alcgp80-119    1.98    1.43       2.55  alcgp    80-119    main   Non-Baseli~</span>
+<span class="co">#&gt; 14 alcgp120+      3.60    2.87       4.39  alcgp    120+      main   Non-Baseli~</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggforce.data-imaginist.com">ggforce</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">d0</span>,
@@ -353,24 +353,24 @@
 <span class="va">d1</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 16 x 6</span>
-<span class="co">#&gt;    term               variable       level       effect   reference      n_level</span>
-<span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;          &lt;fct&gt;       &lt;chr&gt;    &lt;chr&gt;            &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 &lt;NA&gt;               as.factor(cyl) 4           main     Baseline Cate~      11</span>
-<span class="co">#&gt;  2 as.factor(cyl)6    as.factor(cyl) 6           main     Non-Baseline ~       7</span>
-<span class="co">#&gt;  3 as.factor(cyl)8    as.factor(cyl) 8           main     Non-Baseline ~      14</span>
-<span class="co">#&gt;  4 wt                 wt             wt          main     Non-Baseline ~      NA</span>
-<span class="co">#&gt;  5 hp                 hp             hp          main     Non-Baseline ~      NA</span>
-<span class="co">#&gt;  6 &lt;NA&gt;               transmission   automatic   main     Baseline Cate~      19</span>
-<span class="co">#&gt;  7 transmissionmanual transmission   manual      main     Non-Baseline ~      13</span>
-<span class="co">#&gt;  8 &lt;NA&gt;               engine         straight    main     Baseline Cate~      18</span>
-<span class="co">#&gt;  9 engineV-shaped     engine         V-shaped    main     Non-Baseline ~      14</span>
-<span class="co">#&gt; 10 wt:hp              wt:hp          wt:hp       interac~ Non-Baseline ~      NA</span>
-<span class="co">#&gt; 11 &lt;NA&gt;               wt:transmissi~ automatic   interac~ Baseline Cate~      19</span>
-<span class="co">#&gt; 12 wt:transmissionma~ wt:transmissi~ manual      interac~ Non-Baseline ~      13</span>
-<span class="co">#&gt; 13 &lt;NA&gt;               transmission:~ automatic:~ interac~ Baseline Cate~      25</span>
-<span class="co">#&gt; 14 &lt;NA&gt;               transmission:~ manual:str~ interac~ Non-Baseline ~       0</span>
-<span class="co">#&gt; 15 &lt;NA&gt;               transmission:~ automatic:~ interac~ Non-Baseline ~       0</span>
-<span class="co">#&gt; 16 transmissionmanua~ transmission:~ manual:V-s~ interac~ Non-Baseline ~       7</span></code></pre></div>
+<span class="co">#&gt;    term                              variable   level  effect reference  n_level</span>
+<span class="co">#&gt;    &lt;chr&gt;                             &lt;chr&gt;      &lt;fct&gt;  &lt;chr&gt;  &lt;chr&gt;        &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 &lt;NA&gt;                              as.factor~ 4      main   Baseline ~      11</span>
+<span class="co">#&gt;  2 as.factor(cyl)6                   as.factor~ 6      main   Non-Basel~       7</span>
+<span class="co">#&gt;  3 as.factor(cyl)8                   as.factor~ 8      main   Non-Basel~      14</span>
+<span class="co">#&gt;  4 wt                                wt         wt     main   Non-Basel~      NA</span>
+<span class="co">#&gt;  5 hp                                hp         hp     main   Non-Basel~      NA</span>
+<span class="co">#&gt;  6 &lt;NA&gt;                              transmiss~ autom~ main   Baseline ~      19</span>
+<span class="co">#&gt;  7 transmissionmanual                transmiss~ manual main   Non-Basel~      13</span>
+<span class="co">#&gt;  8 &lt;NA&gt;                              engine     strai~ main   Baseline ~      18</span>
+<span class="co">#&gt;  9 engineV-shaped                    engine     V-sha~ main   Non-Basel~      14</span>
+<span class="co">#&gt; 10 wt:hp                             wt:hp      wt:hp  inter~ Non-Basel~      NA</span>
+<span class="co">#&gt; 11 &lt;NA&gt;                              wt:transm~ autom~ inter~ Baseline ~      19</span>
+<span class="co">#&gt; 12 wt:transmissionmanual             wt:transm~ manual inter~ Non-Basel~      13</span>
+<span class="co">#&gt; 13 &lt;NA&gt;                              transmiss~ autom~ inter~ Baseline ~      25</span>
+<span class="co">#&gt; 14 &lt;NA&gt;                              transmiss~ manua~ inter~ Non-Basel~       0</span>
+<span class="co">#&gt; 15 &lt;NA&gt;                              transmiss~ autom~ inter~ Non-Basel~       0</span>
+<span class="co">#&gt; 16 transmissionmanual:engineV-shaped transmiss~ manua~ inter~ Non-Basel~       7</span></code></pre></div>
 <p>We can use similar plotting code as above to plot the interactions:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">d1</span>,

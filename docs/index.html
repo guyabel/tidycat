@@ -171,18 +171,18 @@
 <span class="va">d1</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 10 x 8</span>
-<span class="co">#&gt;    term      estimate conf.low conf.high variable    level  effect  reference   </span>
-<span class="co">#&gt;    &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;fct&gt;  &lt;chr&gt;   &lt;chr&gt;       </span>
-<span class="co">#&gt;  1 (Interce~   41.5     32.1       50.8  (Intercept) (Inte~ main    Non-Baselin~</span>
-<span class="co">#&gt;  2 &lt;NA&gt;         0        0          0    as.factor(~ 4      main    Baseline Ca~</span>
-<span class="co">#&gt;  3 as.facto~   -8.66   -30.0       12.7  as.factor(~ 6      main    Non-Baselin~</span>
-<span class="co">#&gt;  4 as.facto~  -16.9    -27.7       -6.00 as.factor(~ 8      main    Non-Baselin~</span>
-<span class="co">#&gt;  5 &lt;NA&gt;         0        0          0    transmissi~ autom~ main    Baseline Ca~</span>
-<span class="co">#&gt;  6 transmis~   -0.902   -4.02       2.22 transmissi~ manual main    Non-Baselin~</span>
-<span class="co">#&gt;  7 wt          -6.19    -9.59      -2.79 wt          wt     main    Non-Baselin~</span>
-<span class="co">#&gt;  8 &lt;NA&gt;         0        0          0    as.factor(~ 4      intera~ Baseline Ca~</span>
-<span class="co">#&gt;  9 as.facto~    2.12    -4.87       9.12 as.factor(~ 6      intera~ Non-Baselin~</span>
-<span class="co">#&gt; 10 as.facto~    3.84     0.192      7.50 as.factor(~ 8      intera~ Non-Baselin~</span></code></pre></div>
+<span class="co">#&gt;    term               estimate conf.low conf.high variable level effect reference</span>
+<span class="co">#&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;fct&gt; &lt;chr&gt;  &lt;chr&gt;    </span>
+<span class="co">#&gt;  1 (Intercept)          41.5     32.1       50.8  (Interc~ (Int~ main   Non-Base~</span>
+<span class="co">#&gt;  2 &lt;NA&gt;                  0        0          0    as.fact~ 4     main   Baseline~</span>
+<span class="co">#&gt;  3 as.factor(cyl)6      -8.66   -30.0       12.7  as.fact~ 6     main   Non-Base~</span>
+<span class="co">#&gt;  4 as.factor(cyl)8     -16.9    -27.7       -6.00 as.fact~ 8     main   Non-Base~</span>
+<span class="co">#&gt;  5 &lt;NA&gt;                  0        0          0    transmi~ auto~ main   Baseline~</span>
+<span class="co">#&gt;  6 transmissionmanual   -0.902   -4.02       2.22 transmi~ manu~ main   Non-Base~</span>
+<span class="co">#&gt;  7 wt                   -6.19    -9.59      -2.79 wt       wt    main   Non-Base~</span>
+<span class="co">#&gt;  8 &lt;NA&gt;                  0        0          0    as.fact~ 4     inter~ Baseline~</span>
+<span class="co">#&gt;  9 as.factor(cyl)6:wt    2.12    -4.87       9.12 as.fact~ 6     inter~ Non-Base~</span>
+<span class="co">#&gt; 10 as.factor(cyl)8:wt    3.84     0.192      7.50 as.fact~ 8     inter~ Non-Base~</span></code></pre></div>
 <p>The expanded data frame from <code><a href="reference/tidy_categorical.html">tidy_categorical()</a></code> of parameter estimates can be particularly useful for creating coefficient plots, allowing:</p>
 <ul>
 <li>grouping terms from the same categorical variable from the additional columns.</li>
@@ -237,6 +237,7 @@
 <ul class="list-unstyled">
 <li><a href="https://CRAN.R-project.org/package=tidycat"><img src="https://www.r-pkg.org/badges/version/tidycat" alt="CRAN status"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#superseded"><img src="https://img.shields.io/badge/lifecycle-superseded-blue.svg" alt="Lifecycle: superseded"></a></li>
+<li><a href="https://github.com/guyabel/tidycat/actions"><img src="https://github.com/guyabel/tidycat/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 </div>
