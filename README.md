@@ -7,11 +7,11 @@
 
 [![CRAN
 status](https://www.r-pkg.org/badges/version/tidycat)](https://CRAN.R-project.org/package=tidycat)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidycat?color=blue)](https://r-pkg.org/pkg/tidycat)
 [![Lifecycle:
 superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 [![R-CMD-check](https://github.com/guyabel/tidycat/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/tidycat/actions)
-[![CRAN RStudio mirror
-downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidycat?color=blue)](https://r-pkg.org/pkg/tidycat)
 <!-- badges: end -->
 
 <img src='./man/figures/logo.png' align="right" height="139" />
@@ -47,7 +47,7 @@ non-default contrasts such as `contr.helmert()` and when one or more
 model parameters are rank deficient. It also only supports a limited
 range of models; `lm()` or `glm()` should be fine. For more complex
 cases, or an alternative method do create great coefficient plots, see
-the `ggcoef()` function in the
+the `ggcoef_model()` function in the
 [GGally](https://ggobi.github.io/ggally/reference/ggcoef_model.html)
 package, which went through a major upgrade around the same time as I
 developed tidycat.
