@@ -2,6 +2,6 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  intro: intro.html
-last_built: 2021-08-06T02:15Z
+  tidycat: tidycat.html
+last_built: 2021-08-11T05:14Z
 
