@@ -1,5 +1,6 @@
 usethis::use_cran_badge()
 usethis::use_lifecycle_badge(stage = "superseded")
+cranlogs::cranlogs_badge(package_name = "tidycat", summary = "grand-total")
 # usethis::use_pipe()
 # usethis::use_tibble()
 # usethis::use_news_md()
@@ -22,11 +23,6 @@ usethis::gh_token_help()
 gitcreds::gitcreds_set()
 usethis::use_github(protocol = "https", authtoken = GITHUB_PAT)
 usethis::use_github_links()
-
-usethis::use_github_action("check-standard.yaml")
-https://raw.githubusercontent.com/r-lib/actions/master/examples/check-standard.yaml
-usethis::use_github_action_check_standard()
-
 usethis::use_github_actions_badge()
 usethis::use_github_action("pkgdown")
 

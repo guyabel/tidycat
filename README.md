@@ -10,6 +10,8 @@ status](https://www.r-pkg.org/badges/version/tidycat)](https://CRAN.R-project.or
 [![Lifecycle:
 superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#superseded)
 [![R-CMD-check](https://github.com/guyabel/tidycat/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/tidycat/actions)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidycat?color=blue)](https://r-pkg.org/pkg/tidycat)
 <!-- badges: end -->
 
 <img src='./man/figures/logo.png' align="right" height="139" />
@@ -54,7 +56,7 @@ developed tidycat.
 
 For full documentation, see the package vignette: [The tidycat package:
 expand broom::tidy() output for categorical parameter
-estimates](https://guyabel.github.io/tidycat/articles/intro.html)
+estimates](https://guyabel.github.io/tidycat/articles/tidycat.html)
 
 ## Hello World
 

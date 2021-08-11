@@ -103,19 +103,10 @@
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/tidycat.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/intro.html">The tidycat package: expand broom::tidy() output for categorical parameter estimates</a>
-    </li>
-  </ul>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -147,7 +138,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Create additional columns in a tidy model output (such as <a href='https://rdrr.io/pkg/broom/man/tidy.lm.html'>broom::tidy.lm()</a>) to allow for easier control when plotting categorical parameter estimates.</p>
+    <p>Create additional columns in a tidy model output (such as <a href='https://broom.tidymodels.org/reference/tidy.lm.html'>broom::tidy.lm()</a>) to allow for easier control when plotting categorical parameter estimates.</p>
     </div>
 
     <pre class="usage"><span class='fu'>tidy_categorical</span><span class='op'>(</span>
@@ -165,7 +156,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>d</th>
-      <td><p>A data frame <a href='https://rdrr.io/pkg/tibble/man/tibble.html'>tibble::tibble()</a> output from <a href='https://rdrr.io/pkg/broom/man/tidy.lm.html'>broom::tidy.lm()</a>; with one row for each term in the regression, including column <code>term</code></p></td>
+      <td><p>A data frame <a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble::tibble()</a> output from <a href='https://broom.tidymodels.org/reference/tidy.lm.html'>broom::tidy.lm()</a>; with one row for each term in the regression, including column <code>term</code></p></td>
     </tr>
     <tr>
       <th>m</th>
@@ -185,7 +176,7 @@
     </tr>
     <tr>
       <th>exponentiate</th>
-      <td><p>Logical indicating whether or not the results in <a href='https://rdrr.io/pkg/broom/man/tidy.lm.html'>broom::tidy.lm()</a> are exponentiated. Defaults to <code>FALSE</code>.</p></td>
+      <td><p>Logical indicating whether or not the results in <a href='https://broom.tidymodels.org/reference/tidy.lm.html'>broom::tidy.lm()</a> are exponentiated. Defaults to <code>FALSE</code>.</p></td>
     </tr>
     <tr>
       <th>n_level</th>
@@ -195,7 +186,7 @@
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Expanded <a href='https://rdrr.io/pkg/tibble/man/tibble.html'>tibble::tibble()</a> from the version passed to <code>d</code> including additional columns:</p>
+    <p>Expanded <a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble::tibble()</a> from the version passed to <code>d</code> including additional columns:</p>
 <dt>variable</dt><dd><p>The name of the variable that the regression term belongs to.</p></dd>
 <dt>level</dt><dd><p>The level of the categorical variable that the regression term belongs to. Will be an the term name for numeric variables.</p></dd>
 <dt>effect</dt><dd><p>The type of term (<code>main</code> or <code>interaction</code>)</p></dd>
@@ -205,7 +196,7 @@ In addition, extra rows will be added, if include_reference is set to FALSE for 
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://rdrr.io/pkg/broom/man/tidy.lm.html'>broom::tidy.lm()</a></p></div>
+    <div class='dont-index'><p><a href='https://broom.tidymodels.org/reference/tidy.lm.html'>broom::tidy.lm()</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Guy J. Abel</p>
@@ -221,11 +212,11 @@ In addition, extra rows will be added, if include_reference is set to FALSE for 
 #&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://broom.tidymodels.org/'>broom</a></span><span class='op'>)</span>
 
 <span class='va'>m0</span> <span class='op'>&lt;-</span> <span class='va'>esoph</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/mutate_all.html'>mutate_if</a></span><span class='op'>(</span><span class='va'>is.factor</span>, <span class='op'>~</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>.</span>, ordered <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate_all.html'>mutate_if</a></span><span class='op'>(</span><span class='va'>is.factor</span>, <span class='op'>~</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>.</span>, ordered <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://rdrr.io/r/stats/glm.html'>glm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>ncases</span>, <span class='va'>ncontrols</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>agegp</span> <span class='op'>+</span> <span class='va'>tobgp</span> <span class='op'>*</span> <span class='va'>alcgp</span>, data <span class='op'>=</span> <span class='va'>.</span>,
         family <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/family.html'>binomial</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># tidy</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>m0</span><span class='op'>)</span>
+<span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>m0</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 21 x 5</span>
 #&gt;    term        estimate std.error statistic  p.value
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>          <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
@@ -242,7 +233,7 @@ In addition, extra rows will be added, if include_reference is set to FALSE for 
 #&gt; <span style='color: #949494;'># ... with 11 more rows</span></div><div class='input'>
 <span class='co'># add further columns to tidy output to help manage categorical variables</span>
 <span class='va'>m0</span> <span class='op'>%&gt;%</span>
- <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+ <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
  <span class='fu'>tidy_categorical</span><span class='op'>(</span>m <span class='op'>=</span> <span class='va'>m0</span>, include_reference <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 21 x 8</span>
 #&gt;    term        estimate std.error statistic  p.value variable    level    effect
@@ -260,7 +251,7 @@ In addition, extra rows will be added, if include_reference is set to FALSE for 
 #&gt; <span style='color: #949494;'># ... with 11 more rows</span></div><div class='input'>
 <span class='co'># include reference categories and column to indicate the additional terms</span>
 <span class='va'>m0</span> <span class='op'>%&gt;%</span>
- <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+ <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
  <span class='fu'>tidy_categorical</span><span class='op'>(</span>m <span class='op'>=</span> <span class='va'>m0</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 31 x 9</span>
 #&gt;    term        estimate std.error statistic  p.value variable level effect reference
@@ -278,10 +269,10 @@ In addition, extra rows will be added, if include_reference is set to FALSE for 
 #&gt; <span style='color: #949494;'># ... with 21 more rows</span></div><div class='input'>
 <span class='co'># coefficient plots</span>
 <span class='va'>d0</span> <span class='op'>&lt;-</span> <span class='va'>m0</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span><span class='op'>(</span>conf.int <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span>conf.int <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'>tidy_categorical</span><span class='op'>(</span>m <span class='op'>=</span> <span class='va'>m0</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='co'># drop the intercept term</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/slice.html'>slice</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>
 <span class='va'>d0</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 30 x 11</span>
 #&gt;    term   estimate std.error statistic p.value conf.low conf.high variable level
@@ -300,22 +291,22 @@ In addition, extra rows will be added, if include_reference is set to FALSE for 
 <span class='co'># typical coefficient plot</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d0</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/pkg/tidyr/man/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span>,
-       mapping <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>term</span>, y <span class='op'>=</span> <span class='va'>estimate</span>,
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d0</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>term</span>, y <span class='op'>=</span> <span class='va'>estimate</span>,
                      ymin <span class='op'>=</span> <span class='va'>conf.low</span>, ymax <span class='op'>=</span> <span class='va'>conf.high</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_linerange.html'>geom_pointrange</a></span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_linerange.html'>geom_pointrange</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='img'><img src='tidy_categorical-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># enhanced coefficient plot using additional columns from tidy_categorical and ggforce::facet_row()</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggforce.data-imaginist.com'>ggforce</a></span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d0</span>,
-       mapping <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>level</span>, colour <span class='op'>=</span> <span class='va'>reference</span>,
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>d0</span>,
+       mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>level</span>, colour <span class='op'>=</span> <span class='va'>reference</span>,
                      y <span class='op'>=</span> <span class='va'>estimate</span>, ymin <span class='op'>=</span> <span class='va'>conf.low</span>, ymax <span class='op'>=</span> <span class='va'>conf.high</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/ggforce/man/facet_row.html'>facet_row</a></span><span class='op'>(</span>facets <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/vars.html'>vars</a></span><span class='op'>(</span><span class='va'>variable</span><span class='op'>)</span>, scales <span class='op'>=</span> <span class='st'>"free_x"</span>, space <span class='op'>=</span> <span class='st'>"free"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_linerange.html'>geom_pointrange</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>45</span>, hjust <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggforce.data-imaginist.com/reference/facet_row.html'>facet_row</a></span><span class='op'>(</span>facets <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/vars.html'>vars</a></span><span class='op'>(</span><span class='va'>variable</span><span class='op'>)</span>, scales <span class='op'>=</span> <span class='st'>"free_x"</span>, space <span class='op'>=</span> <span class='st'>"free"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_hline</a></span><span class='op'>(</span>yintercept <span class='op'>=</span> <span class='fl'>0</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_linerange.html'>geom_pointrange</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>axis.text.x <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>45</span>, hjust <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='img'><img src='tidy_categorical-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
