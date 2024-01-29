@@ -4,7 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Create additional rows and columns on broom::tidy() output to allow for easier control on categorical parameter estimates. ">
 <title>Expand Tidy Output for Categorical Parameter Estimates • tidycat</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -12,12 +13,11 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
-<script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Expand Tidy Output for Categorical Parameter Estimates">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Expand Tidy Output for Categorical Parameter Estimates">
 <meta property="og:description" content="Create additional rows and columns on broom::tidy() output to allow for easier control on categorical parameter estimates. ">
 <meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -31,161 +31,155 @@
   gtag('config', 'G-2XE3QBSNZJ');
 </script>
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-home">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">tidycat</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="index.html">tidycat</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="articles/tidycat.html">Get started</a>
 </li>
-<li>
-  <a href="articles/tidycat.html">Get started</a>
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
-<li>
-  <a href="reference/index.html">Reference</a>
-</li>
-<li>
-  <a href="news/index.html">Changelog</a>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/guyabel/tidycat/">
-    <span class="fab fa-github fa-lg"></span>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/guyabel/tidycat/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
-<li>
-  <a href="https://twitter.com/guyabelguyabel">
-    <span class="fab fa-twitter fa-lg"></span>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://twitter.com/guyabelguyabel">
+    <span class="fab fa fab fa-twitter fa-lg"></span>
      
   </a>
 </li>
-<li>
-  <a href="https://guyabel.com">
-    <span class="fas fa-blog fa-lg"></span>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://guyabel.com">
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
+</nav><div class="container template-home">
+<div class="row">
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="tidycat">tidycat<a class="anchor" aria-label="anchor" href="#tidycat"></a>
+</h1>
 </div>
-<!--/.navbar -->
-
-      
-
-      </header><div class="row">
-  <div class="contents col-md-9">
-<div id="tidycat" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#tidycat" class="anchor"></a>tidycat</h1></div>
 <!-- badges: start -->
 
-<p><img src="./man/figures/logo.png" align="right" height="139"></p>
-<div id="introduction" class="section level2">
-<h2 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h2>
-<p>The <code>tidycat</code> package includes the <code><a href="reference/tidy_categorical.html">tidy_categorical()</a></code> function to expand <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code> outputs for categorical parameter estimates.</p>
-<p>See the <a href="http://guyabel.github.io/tidycat/">pkgdown site</a> for full details.</p>
+<!-- <img src='./man/figures/logo.png' align="right" height="139" /> -->
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
+<p>The <code>tidycat</code> package includes the <code><a href="reference/tidy_categorical.html">tidy_categorical()</a></code> function to expand <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">broom::tidy()</a></code> outputs for categorical parameter estimates.</p>
+<p>See the <a href="http://guyabel.github.io/tidycat/" class="external-link">pkgdown site</a> for full details.</p>
 </div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of tidycat from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the released version of tidycat from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidycat"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tidycat"</span><span class="op">)</span></span></code></pre></div>
+<p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"guyabel/tidycat"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"guyabel/tidycat"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="limitations" class="section level2">
-<h2 class="hasAnchor">
-<a href="#limitations" class="anchor"></a>Limitations</h2>
-<p>The <code><a href="reference/tidy_categorical.html">tidy_categorical()</a></code> function will probably not work as expected for non-default contrasts such as <code><a href="https://rdrr.io/r/stats/contrast.html">contr.helmert()</a></code> and when one or more model parameters are rank deficient. It also only supports a limited range of models; <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> or <code><a href="https://rdrr.io/r/stats/glm.html">glm()</a></code> should be fine. For more complex cases, or an alternative method do create great coefficient plots, see the <code>ggcoef_model()</code> function in the <a href="https://ggobi.github.io/ggally/reference/ggcoef_model.html">GGally</a> package, which went through a major upgrade around the same time as I developed tidycat.</p>
+<div class="section level2">
+<h2 id="limitations">Limitations<a class="anchor" aria-label="anchor" href="#limitations"></a>
+</h2>
+<p>The <code><a href="reference/tidy_categorical.html">tidy_categorical()</a></code> function will probably not work as expected for non-default contrasts such as <code><a href="https://rdrr.io/r/stats/contrast.html" class="external-link">contr.helmert()</a></code> and when one or more model parameters are rank deficient. It also only supports a limited range of models; <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> or <code><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm()</a></code> should be fine. For more complex cases, or an alternative method to create great coefficient plots, see the <code>ggcoef_model()</code> function in the <a href="https://ggobi.github.io/ggally/reference/ggcoef_model.html" class="external-link">GGally</a> package, which went through a major upgrade around the same time as I developed tidycat.</p>
 </div>
-<div id="documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#documentation" class="anchor"></a>Documentation</h2>
-<p>For full documentation, see the package vignette: <a href="https://guyabel.github.io/tidycat/articles/tidycat.html">The tidycat package: expand broom::tidy() output for categorical parameter estimates</a></p>
+<div class="section level2">
+<h2 id="documentation">Documentation<a class="anchor" aria-label="anchor" href="#documentation"></a>
+</h2>
+<p>For full documentation, see the package vignette: <a href="https://guyabel.github.io/tidycat/articles/tidycat.html" class="external-link">The tidycat package: expand broom::tidy() output for categorical parameter estimates</a></p>
 </div>
-<div id="hello-world" class="section level2">
-<h2 class="hasAnchor">
-<a href="#hello-world" class="anchor"></a>Hello World</h2>
-<p>The <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code> function in the broom package takes the messy output of built-in functions in R, such as <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code>, and turns them into tidy data frames.</p>
+<div class="section level2">
+<h2 id="hello-world">Hello World<a class="anchor" aria-label="anchor" href="#hello-world"></a>
+</h2>
+<p>The <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy()</a></code> function in the broom package takes the messy output of built-in functions in R, such as <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code>, and turns them into tidy data frames.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>
-
-<span class="va">m1</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>transmission <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode_factor</a></span><span class="op">(</span><span class="va">am</span>, `0` <span class="op">=</span> <span class="st">"automatic"</span>, `1` <span class="op">=</span> <span class="st">"manual"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">+</span> <span class="va">transmission</span> <span class="op">+</span> <span class="va">wt</span> <span class="op">*</span>  <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span>
-
-<span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 7 x 5</span>
-<span class="co">#&gt;   term               estimate std.error statistic       p.value</span>
-<span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 (Intercept)          41.5        4.54     9.14  0.00000000190</span>
-<span class="co">#&gt; 2 as.factor(cyl)6      -8.66      10.4     -0.836 0.411        </span>
-<span class="co">#&gt; 3 as.factor(cyl)8     -16.9        5.27    -3.20  0.00374      </span>
-<span class="co">#&gt; 4 transmissionmanual   -0.902      1.51    -0.595 0.557        </span>
-<span class="co">#&gt; 5 wt                   -6.19       1.65    -3.75  0.000937     </span>
-<span class="co">#&gt; 6 as.factor(cyl)6:wt    2.12       3.40     0.625 0.538        </span>
-<span class="co">#&gt; 7 as.factor(cyl)8:wt    3.84       1.77     2.17  0.0399</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>transmission <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html" class="external-link">recode_factor</a></span><span class="op">(</span><span class="va">am</span>, `0` <span class="op">=</span> <span class="st">"automatic"</span>, `1` <span class="op">=</span> <span class="st">"manual"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op">+</span> <span class="va">transmission</span> <span class="op">+</span> <span class="va">wt</span> <span class="op">*</span>  <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">.</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">m1</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 7 × 5</span></span>
+<span><span class="co">#&gt;   term               estimate std.error statistic       p.value</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 (Intercept)          41.5        4.54     9.14  0.00000000190</span></span>
+<span><span class="co">#&gt; 2 as.factor(cyl)6      -8.66      10.4     -0.836 0.411        </span></span>
+<span><span class="co">#&gt; 3 as.factor(cyl)8     -16.9        5.27    -3.20  0.00374      </span></span>
+<span><span class="co">#&gt; 4 transmissionmanual   -0.902      1.51    -0.595 0.557        </span></span>
+<span><span class="co">#&gt; 5 wt                   -6.19       1.65    -3.75  0.000937     </span></span>
+<span><span class="co">#&gt; 6 as.factor(cyl)6:wt    2.12       3.40     0.625 0.538        </span></span>
+<span><span class="co">#&gt; 7 as.factor(cyl)8:wt    3.84       1.77     2.17  0.0399</span></span></code></pre></div>
 <p>The <code><a href="reference/tidy_categorical.html">tidy_categorical()</a></code> function adds</p>
 <ul>
-<li>further columns (<code>variable</code>, <code>level</code> and <code>effect</code>) to the <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code> output to help manage categorical variables</li>
+<li>further columns (<code>variable</code>, <code>level</code> and <code>effect</code>) to the <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">broom::tidy()</a></code> output to help manage categorical variables</li>
 <li>further rows for reference category terms and a column to indicate their location (<code>reference</code>) when setting <code>include_reference = TRUE</code> (default)</li>
 </ul>
 <p>It requires two inputs</p>
 <ul>
-<li>a data frame <code>d</code> of parameter estimates from a model from <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code>
+<li>a data frame <code>d</code> of parameter estimates from a model from <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">broom::tidy()</a></code>
 </li>
-<li>the corresponding model object <code>m</code> passed to <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code>
+<li>the corresponding model object <code>m</code> passed to <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">broom::tidy()</a></code>
 </li>
 </ul>
 <p>For example:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://guyabel.github.io/tidycat/">tidycat</a></span><span class="op">)</span>
-<span class="va">d1</span> <span class="op">&lt;-</span> <span class="va">m1</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span>conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/tidy_categorical.html">tidy_categorical</a></span><span class="op">(</span>m <span class="op">=</span> <span class="va">m1</span><span class="op">)</span>
-<span class="va">d1</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 10 x 8</span>
-<span class="co">#&gt;    term               estimate conf.low conf.high variable level effect reference</span>
-<span class="co">#&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;fct&gt; &lt;chr&gt;  &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 (Intercept)          41.5     32.1       50.8  (Interc~ (Int~ main   Non-Base~</span>
-<span class="co">#&gt;  2 &lt;NA&gt;                  0        0          0    as.fact~ 4     main   Baseline~</span>
-<span class="co">#&gt;  3 as.factor(cyl)6      -8.66   -30.0       12.7  as.fact~ 6     main   Non-Base~</span>
-<span class="co">#&gt;  4 as.factor(cyl)8     -16.9    -27.7       -6.00 as.fact~ 8     main   Non-Base~</span>
-<span class="co">#&gt;  5 &lt;NA&gt;                  0        0          0    transmi~ auto~ main   Baseline~</span>
-<span class="co">#&gt;  6 transmissionmanual   -0.902   -4.02       2.22 transmi~ manu~ main   Non-Base~</span>
-<span class="co">#&gt;  7 wt                   -6.19    -9.59      -2.79 wt       wt    main   Non-Base~</span>
-<span class="co">#&gt;  8 &lt;NA&gt;                  0        0          0    as.fact~ 4     inter~ Baseline~</span>
-<span class="co">#&gt;  9 as.factor(cyl)6:wt    2.12    -4.87       9.12 as.fact~ 6     inter~ Non-Base~</span>
-<span class="co">#&gt; 10 as.factor(cyl)8:wt    3.84     0.192      7.50 as.fact~ 8     inter~ Non-Base~</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://guyabel.github.io/tidycat/" class="external-link">tidycat</a></span><span class="op">)</span></span>
+<span><span class="va">d1</span> <span class="op">&lt;-</span> <span class="va">m1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span>conf.int <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="reference/tidy_categorical.html">tidy_categorical</a></span><span class="op">(</span>m <span class="op">=</span> <span class="va">m1</span><span class="op">)</span></span>
+<span><span class="va">d1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 8</span></span>
+<span><span class="co">#&gt;    term               estimate conf.low conf.high variable  level effect refer…¹</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;                 &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;fct&gt; &lt;chr&gt;  &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt;  1 (Intercept)          41.5     32.1       50.8  (Interce… (Int… main   Non-Ba…</span></span>
+<span><span class="co">#&gt;  2 &lt;NA&gt;                  0        0          0    as.facto… 4     main   Baseli…</span></span>
+<span><span class="co">#&gt;  3 as.factor(cyl)6      -8.66   -30.0       12.7  as.facto… 6     main   Non-Ba…</span></span>
+<span><span class="co">#&gt;  4 as.factor(cyl)8     -16.9    -27.7       -6.00 as.facto… 8     main   Non-Ba…</span></span>
+<span><span class="co">#&gt;  5 &lt;NA&gt;                  0        0          0    transmis… auto… main   Baseli…</span></span>
+<span><span class="co">#&gt;  6 transmissionmanual   -0.902   -4.02       2.22 transmis… manu… main   Non-Ba…</span></span>
+<span><span class="co">#&gt;  7 wt                   -6.19    -9.59      -2.79 wt        wt    main   Non-Ba…</span></span>
+<span><span class="co">#&gt;  8 &lt;NA&gt;                  0        0          0    as.facto… 4     inter… Baseli…</span></span>
+<span><span class="co">#&gt;  9 as.factor(cyl)6:wt    2.12    -4.87       9.12 as.facto… 6     inter… Non-Ba…</span></span>
+<span><span class="co">#&gt; 10 as.factor(cyl)8:wt    3.84     0.192      7.50 as.facto… 8     inter… Non-Ba…</span></span>
+<span><span class="co">#&gt; # … with abbreviated variable name ¹​reference</span></span></code></pre></div>
 <p>The expanded data frame from <code><a href="reference/tidy_categorical.html">tidy_categorical()</a></code> of parameter estimates can be particularly useful for creating coefficient plots, allowing:</p>
 <ul>
 <li>grouping terms from the same categorical variable from the additional columns.</li>
@@ -193,74 +187,82 @@
 </ul>
 <p>For example:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org">forcats</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggforce.data-imaginist.com">ggforce</a></span><span class="op">)</span>
-
-<span class="va">d1</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html">fct_inorder</a></span><span class="op">(</span><span class="va">variable</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">level</span>, y <span class="op">=</span> <span class="va">estimate</span>, colour <span class="op">=</span> <span class="va">reference</span>,
-                       ymin <span class="op">=</span> <span class="va">conf.low</span>, ymax <span class="op">=</span> <span class="va">conf.high</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggforce.data-imaginist.com/reference/facet_row.html">facet_row</a></span><span class="op">(</span>facets <span class="op">=</span> <span class="st">"variable"</span>, scales <span class="op">=</span> <span class="st">"free_x"</span>, space <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html">geom_pointrange</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://forcats.tidyverse.org/" class="external-link">forcats</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggforce.data-imaginist.com" class="external-link">ggforce</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">d1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>variable <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_inorder.html" class="external-link">fct_inorder</a></span><span class="op">(</span><span class="va">variable</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">level</span>, y <span class="op">=</span> <span class="va">estimate</span>, colour <span class="op">=</span> <span class="va">reference</span>,</span>
+<span>                       ymin <span class="op">=</span> <span class="va">conf.low</span>, ymax <span class="op">=</span> <span class="va">conf.high</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggforce.data-imaginist.com/reference/facet_row.html" class="external-link">facet_row</a></span><span class="op">(</span>facets <span class="op">=</span> <span class="st">"variable"</span>, scales <span class="op">=</span> <span class="st">"free_x"</span>, space <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_linerange.html" class="external-link">geom_pointrange</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="https://raw.githubusercontent.com/guyabel/tidycat/master/README-files/unnamed-chunk-4-1.png" width="100%"></p>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div class="links">
-<h2>Links</h2>
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=tidycat">https://​cloud.r-project.org/​package=tidycat</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/guyabel/tidycat/">https://​github.com/​guyabel/​tidycat/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/guyabel/tidycat/issues/">https://​github.com/​guyabel/​tidycat/​issues/​</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=tidycat" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/guyabel/tidycat/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/guyabel/tidycat/issues/" class="external-link">Report a bug</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+<li><a href="https://www.r-project.org/Licenses/GPL-3" class="external-link">GPL-3</a></li>
 </ul>
 </div>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
+<ul class="list-unstyled">
+<li><a href="authors.html#citation">Citing tidycat</a></li>
+</ul>
+</div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li>Guy J. Abel <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4893-5687" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Guy J. Abel <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4893-5687" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=tidycat"><img src="https://www.r-pkg.org/badges/version/tidycat" alt="CRAN status"></a></li>
-<li><a href="https://r-pkg.org/pkg/tidycat"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidycat?color=blue" alt="CRAN RStudio mirror downloads"></a></li>
-<li><a href="https://lifecycle.r-lib.org/articles/stages.html#superseded"><img src="https://img.shields.io/badge/lifecycle-superseded-blue.svg" alt="Lifecycle: superseded"></a></li>
-<li><a href="https://github.com/guyabel/tidycat/actions"><img src="https://github.com/guyabel/tidycat/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://CRAN.R-project.org/package=tidycat" class="external-link"><img src="https://www.r-pkg.org/badges/version/tidycat" alt="CRAN status"></a></li>
+<li><a href="https://r-pkg.org/pkg/tidycat" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidycat?color=blue" alt="CRAN RStudio mirror downloads"></a></li>
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#superseded" class="external-link"><img src="https://img.shields.io/badge/lifecycle-superseded-blue.svg" alt="Lifecycle: superseded"></a></li>
+<li><a href="https://github.com/guyabel/tidycat/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/guyabel/tidycat/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
-</div>
-</div>
 
-
-      <footer><div class="copyright">
-  <p>Developed by Guy J. Abel.</p>
+  </aside>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Guy J. Abel.</p>
 </div>
 
-      </footer>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+</div>
+
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>
