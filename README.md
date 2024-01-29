@@ -14,7 +14,7 @@ superseded](https://img.shields.io/badge/lifecycle-superseded-blue.svg)](https:/
 [![R-CMD-check](https://github.com/guyabel/tidycat/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/tidycat/actions)
 <!-- badges: end -->
 
-<img src='./man/figures/logo.png' align="right" height="139" />
+<!-- <img src='./man/figures/logo.png' align="right" height="139" /> -->
 
 ## Introduction
 
@@ -46,7 +46,7 @@ The `tidy_categorical()` function will probably not work as expected for
 non-default contrasts such as `contr.helmert()` and when one or more
 model parameters are rank deficient. It also only supports a limited
 range of models; `lm()` or `glm()` should be fine. For more complex
-cases, or an alternative method do create great coefficient plots, see
+cases, or an alternative method to create great coefficient plots, see
 the `ggcoef_model()` function in the
 [GGally](https://ggobi.github.io/ggally/reference/ggcoef_model.html)
 package, which went through a major upgrade around the same time as I
@@ -73,7 +73,7 @@ m1 <- mtcars %>%
   lm(mpg ~ as.factor(cyl) + transmission + wt *  as.factor(cyl), data = .)
 
 tidy(m1)
-#> # A tibble: 7 x 5
+#> # A tibble: 7 × 5
 #>   term               estimate std.error statistic       p.value
 #>   <chr>                 <dbl>     <dbl>     <dbl>         <dbl>
 #> 1 (Intercept)          41.5        4.54     9.14  0.00000000190
@@ -87,17 +87,17 @@ tidy(m1)
 
 The `tidy_categorical()` function adds
 
--   further columns (`variable`, `level` and `effect`) to the
-    `broom::tidy()` output to help manage categorical variables
--   further rows for reference category terms and a column to indicate
-    their location (`reference`) when setting `include_reference = TRUE`
-    (default)
+- further columns (`variable`, `level` and `effect`) to the
+  `broom::tidy()` output to help manage categorical variables
+- further rows for reference category terms and a column to indicate
+  their location (`reference`) when setting `include_reference = TRUE`
+  (default)
 
 It requires two inputs
 
--   a data frame `d` of parameter estimates from a model from
-    `broom::tidy()`
--   the corresponding model object `m` passed to `broom::tidy()`
+- a data frame `d` of parameter estimates from a model from
+  `broom::tidy()`
+- the corresponding model object `m` passed to `broom::tidy()`
 
 For example:
 
@@ -108,29 +108,30 @@ d1 <- m1 %>%
   tidy_categorical(m = m1)
 d1 %>%
   select(-(3:5))
-#> # A tibble: 10 x 8
-#>    term               estimate conf.low conf.high variable level effect reference
-#>    <chr>                 <dbl>    <dbl>     <dbl> <chr>    <fct> <chr>  <chr>    
-#>  1 (Intercept)          41.5     32.1       50.8  (Interc~ (Int~ main   Non-Base~
-#>  2 <NA>                  0        0          0    as.fact~ 4     main   Baseline~
-#>  3 as.factor(cyl)6      -8.66   -30.0       12.7  as.fact~ 6     main   Non-Base~
-#>  4 as.factor(cyl)8     -16.9    -27.7       -6.00 as.fact~ 8     main   Non-Base~
-#>  5 <NA>                  0        0          0    transmi~ auto~ main   Baseline~
-#>  6 transmissionmanual   -0.902   -4.02       2.22 transmi~ manu~ main   Non-Base~
-#>  7 wt                   -6.19    -9.59      -2.79 wt       wt    main   Non-Base~
-#>  8 <NA>                  0        0          0    as.fact~ 4     inter~ Baseline~
-#>  9 as.factor(cyl)6:wt    2.12    -4.87       9.12 as.fact~ 6     inter~ Non-Base~
-#> 10 as.factor(cyl)8:wt    3.84     0.192      7.50 as.fact~ 8     inter~ Non-Base~
+#> # A tibble: 10 × 8
+#>    term               estimate conf.low conf.high variable  level effect refer…¹
+#>    <chr>                 <dbl>    <dbl>     <dbl> <chr>     <fct> <chr>  <chr>  
+#>  1 (Intercept)          41.5     32.1       50.8  (Interce… (Int… main   Non-Ba…
+#>  2 <NA>                  0        0          0    as.facto… 4     main   Baseli…
+#>  3 as.factor(cyl)6      -8.66   -30.0       12.7  as.facto… 6     main   Non-Ba…
+#>  4 as.factor(cyl)8     -16.9    -27.7       -6.00 as.facto… 8     main   Non-Ba…
+#>  5 <NA>                  0        0          0    transmis… auto… main   Baseli…
+#>  6 transmissionmanual   -0.902   -4.02       2.22 transmis… manu… main   Non-Ba…
+#>  7 wt                   -6.19    -9.59      -2.79 wt        wt    main   Non-Ba…
+#>  8 <NA>                  0        0          0    as.facto… 4     inter… Baseli…
+#>  9 as.factor(cyl)6:wt    2.12    -4.87       9.12 as.facto… 6     inter… Non-Ba…
+#> 10 as.factor(cyl)8:wt    3.84     0.192      7.50 as.facto… 8     inter… Non-Ba…
+#> # … with abbreviated variable name ¹​reference
 ```
 
 The expanded data frame from `tidy_categorical()` of parameter estimates
 can be particularly useful for creating coefficient plots, allowing:
 
--   grouping terms from the same categorical variable from the
-    additional columns.
--   inclusion of reference categories in a coefficient plot from the
-    additional rows, allowing the reader to better grasp the meaning of
-    the parameter estimates in each categorical variable.
+- grouping terms from the same categorical variable from the additional
+  columns.
+- inclusion of reference categories in a coefficient plot from the
+  additional rows, allowing the reader to better grasp the meaning of
+  the parameter estimates in each categorical variable.
 
 For example:
 

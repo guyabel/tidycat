@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/guyabel/tidycat/workflows/R-CMD-check/badge.svg)](https://github.com/guyabel/tidycat/actions)
 <!-- badges: end -->
 
-<img src='./man/figures/logo.png' align="right" height="139" />
+<!-- <img src='./man/figures/logo.png' align="right" height="139" /> -->
 
 ## Introduction
 
@@ -48,7 +48,7 @@ devtools::install_github("guyabel/tidycat")
 
 ## Limitations
 
-The `tidy_categorical()` function will probably not work as expected for non-default contrasts such as `contr.helmert()` and when one or more model parameters are rank deficient. It also only supports a limited range of models; `lm()` or `glm()` should be fine. For more complex cases, or an alternative method do create great coefficient plots, see the `ggcoef_model()` function in the [GGally](https://ggobi.github.io/ggally/reference/ggcoef_model.html) package, which went through a major upgrade around the same time as I developed tidycat.
+The `tidy_categorical()` function will probably not work as expected for non-default contrasts such as `contr.helmert()` and when one or more model parameters are rank deficient. It also only supports a limited range of models; `lm()` or `glm()` should be fine. For more complex cases, or an alternative method to create great coefficient plots, see the `ggcoef_model()` function in the [GGally](https://ggobi.github.io/ggally/reference/ggcoef_model.html) package, which went through a major upgrade around the same time as I developed tidycat.
 
 ## Documentation
 

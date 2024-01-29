@@ -1,4 +1,5 @@
 template:
+  bootstrap: 5
   params:
     ganalytics: G-2XE3QBSNZJ
 navbar:
@@ -10,5 +11,5 @@ navbar:
        icon: "fab fa-twitter fa-lg"
        href: https://twitter.com/guyabelguyabel
      personal-site:
-       icon: "fas fa-blog fa-lg"
+       icon: "fas fa-home fa-lg"
        href: https://guyabel.com
