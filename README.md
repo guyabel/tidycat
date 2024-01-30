@@ -47,8 +47,9 @@ non-default contrasts such as `contr.helmert()` and when one or more
 model parameters are rank deficient. It also only supports a limited
 range of models; `lm()` or `glm()` should be fine. For more complex
 cases, or an alternative method to create great coefficient plots, see
-the `ggcoef_model()` function in the
-[GGally](https://ggobi.github.io/ggally/reference/ggcoef_model.html)
+the
+[`ggcoef_model()`](https://larmarange.github.io/ggstats/articles/ggcoef_model.html)
+function in the [ggstats](https://larmarange.github.io/ggstats/)
 package, which went through a major upgrade around the same time as I
 developed tidycat.
 
